@@ -1,21 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ShareModule } from './share/share.module';
+import { SharedModule } from '@app/shared';
+import { CoreModule } from '@app/core';
 
+import { SettingsModule } from './settings';
+import { StaticModule } from './static';
+
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
-    NgbModule.forRoot(),
+    // angular
+    BrowserAnimationsModule,
     BrowserModule,
-    ShareModule
+
+    // core & shared
+    CoreModule,
+    SharedModule,
+
+    // features
+    StaticModule,
+    SettingsModule,
+
+    // app
+    AppRoutingModule
   ],
+  declarations: [AppComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -41,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy {
   logo = require('../assets/logo.png');
   navigation = [
     { link: 'about', label: 'About' },
-    { link: 'features', label: 'Features' },
+    { link: 'lectures', label: 'Lectures' },
     { link: 'examples', label: 'Examples' }
   ];
   navigationSideMenu = [

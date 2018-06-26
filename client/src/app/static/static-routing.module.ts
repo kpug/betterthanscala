@@ -7,9 +7,9 @@ import { FeaturesComponent } from './features/features.component';
 const routes: Routes = [
   { path: 'about', component: AboutComponent, data: { title: 'About' } },
   {
-    path: 'features',
+    path: 'lectures',
     component: FeaturesComponent,
-    data: { title: 'Features' }
+    data: { title: 'Lectures' }
   }
 ];
 

@@ -5,6 +5,33 @@
     </div>
   </div>
   <div class="row align-items-end">
+    <div class="col-md-6 col-lg-4" *ngFor="let lecture of lectures"[ngClass]="routeAnimationsElements">
+      <mat-card>
+        <mat-card-title><code>{{ lecture.version }}</code>{{ lecture.name }}</mat-card-title>
+        <mat-card-subtitle>
+          {{ lecture.content }}
+        </mat-card-subtitle>
+        <mat-card-actions>
+          <a mat-icon-button href="https://github.com/angular/angular" target="_blank">
+            <mat-icon fontSet="fab" fontIcon="fa-github"></mat-icon>
+          </a>
+          <a mat-button href="https://angular.io/docs/ts/latest/" target="_blank">
+            <mat-icon fontSet="fas" fontIcon="fa-book"></mat-icon>
+            Docs
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="main-heading">Lectures</h1>
+    </div>
+  </div>
+  <div class="row align-items-end">
     <div class="col-md-6 col-lg-4" [ngClass]="routeAnimationsElements">
       <mat-card>
         <mat-card-title><code>{{versions.angular}}</code>Angular</mat-card-title>
@@ -189,4 +216,4 @@
       </mat-card>
     </div>
   </div>
-</div>
+</div> -->

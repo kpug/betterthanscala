@@ -4,23 +4,23 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from '@app/shared';
 import { CoreModule } from '@app/core';
 
-import { FeaturesComponent } from './features.component';
+import { LecturesComponent } from './lectures.component';
 
 describe('FeaturesComponent', () => {
-  let component: FeaturesComponent;
-  let fixture: ComponentFixture<FeaturesComponent>;
+  let component: LecturesComponent;
+  let fixture: ComponentFixture<LecturesComponent>;
 
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
         imports: [RouterTestingModule, SharedModule, CoreModule],
-        declarations: [FeaturesComponent]
+        declarations: [LecturesComponent]
       }).compileComponents();
     })
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FeaturesComponent);
+    fixture = TestBed.createComponent(LecturesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

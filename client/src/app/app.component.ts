@@ -43,8 +43,8 @@ export class AppComponent implements OnInit, OnDestroy {
     { link: 'about', label: '홈' },
     { link: 'lectures', label: '강좌' },
     { link: 'articles', label: '블로그' },
-    { link: 'articles', label: '기여하기' },
-    { link: 'articles', label: '도움주기' },
+    { link: 'contribute', label: '기여하기' },
+    { link: 'support', label: '도움주기' },
     { link: 'examples', label: 'Examples' }
   ];
   navigationSideMenu = [

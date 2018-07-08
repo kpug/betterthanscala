@@ -3,6 +3,24 @@
     <div class="container">
       <h1>Better than scala</h1>
       <div class="actions">
+        <div [ngClass]="routeAnimationsElements">
+          <h2>스칼라 란?</h2>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="actions">
+         <div [ngClass]="routeAnimationsElements">
+           <h2>이 사이트 에서는?</h2>
+          <span></span>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <!-- 
+      <div class="actions">
         <a [ngClass]="routeAnimationsElements"
            mat-raised-button class="actions-main" color="primary" routerLink="../lectures">
           Lectures
@@ -51,7 +69,7 @@
       </div>
       <div class="get-started" [ngClass]="routeAnimationsElements">
       </div>
-      <!-- <div class="get-started" [ngClass]="routeAnimationsElements">
+      <div class="get-started" [ngClass]="routeAnimationsElements">
         <h2>Getting started</h2>
         <code>git clone
           https://github.com/tomastrajan/angular-ngrx-material-starter.git
@@ -59,11 +77,11 @@
         <code>cd new-project</code><br>
         <code>npm install</code><br>
         <code>npm start</code>
-      </div> -->
+      </div>
     </div>
   </div>
 </div>
-<!-- <div class="container">
+<div class="container">
   <div class="follow-releases" [ngClass]="routeAnimationsElements">
     <h2>Get notified about new releases</h2>
     <p>

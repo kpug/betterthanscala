@@ -12,10 +12,10 @@
           {{ lecture.content }}
         </mat-card-subtitle>
         <mat-card-actions>
-          <a mat-icon-button href="https://github.com/angular/angular" target="_blank">
+          <a mat-icon-button href="{{ lecture.github }}" target="_blank">
             <mat-icon fontSet="fab" fontIcon="fa-github"></mat-icon>
           </a>
-          <a mat-button href="https://angular.io/docs/ts/latest/" target="_blank">
+          <a mat-button href="{{ lecture.docs }}" target="_blank">
             <mat-icon fontSet="fas" fontIcon="fa-book"></mat-icon>
             Docs
           </a>

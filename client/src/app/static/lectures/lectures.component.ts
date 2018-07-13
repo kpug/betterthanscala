@@ -17,8 +17,8 @@ export class LecturesComponent implements OnInit {
       name: 'Scala',
       version: '2.12.6',
       content: '스칼라는 객체 지향 프로그래밍 언어와 함수형 프로그래밍의 요소가 결합된 다중패러다임 프로그래밍 언어입니다.',
-      github: '',
-      docs: ''
+      github: 'https://github.com/kpug/scala-gitbook',
+      docs: 'https://kpug.github.io/scala-gitbook'
     },
     // {
     //   name: 'Akka',

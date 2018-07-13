@@ -14,19 +14,19 @@ export class LecturesComponent implements OnInit {
 
   lectures = [
     {
-      name: 'Play framework',
-      version: '1.0.0',
-      content: 'blabla',
+      name: 'Scala',
+      version: '2.12.6',
+      content: '스칼라는 객체 지향 프로그래밍 언어와 함수형 프로그래밍의 요소가 결합된 다중패러다임 프로그래밍 언어입니다.',
       github: '',
       docs: ''
     },
-    {
-      name: 'Akka',
-      version: '1.0.0',
-      content: 'blabla',
-      github: '',
-      docs: ''
-    },
+    // {
+    //   name: 'Akka',
+    //   version: '1.0.0',
+    //   content: 'blabla',
+    //   github: '',
+    //   docs: ''
+    // },
   ]
 
   ngOnInit() {}

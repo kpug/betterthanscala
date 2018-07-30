@@ -38,14 +38,14 @@ export class AppComponent implements OnInit, OnDestroy {
   envName = env.envName;
   version = env.versions.app;
   year = new Date().getFullYear();
-  logo = require('../assets/logo.png');
+  logo = require('../assets/logo2.png');
   navigation = [
     { link: 'about', label: '홈' },
     { link: 'lectures', label: '강좌' },
-    { link: 'articles', label: '블로그' },
-    { link: 'contribute', label: '기여하기' },
-    { link: 'support', label: '도움주기' },
-    { link: 'examples', label: 'Examples' }
+    // { link: 'articles', label: '블로그' },
+    // { link: 'contribute', label: '기여하기' },
+    // { link: 'support', label: '도움주기' },
+    // { link: 'examples', label: 'Examples' }
   ];
   navigationSideMenu = [
     ...this.navigation,

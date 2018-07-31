@@ -20,6 +20,13 @@ export class LecturesComponent implements OnInit {
       github: 'https://github.com/kpug/scala-gitbook',
       docs: 'https://kpug.github.io/scala-gitbook'
     },
+    {
+      name: 'FP in Scala',
+      // version: '',
+      content: '스칼라로 배우는 함수형 프로그래밍 스터디 정리 자료입니다.',
+      github: 'https://github.com/kpug/fp-gitbook',
+      docs: 'https://kpug.github.io/fp-gitbook/'
+    },
     // {
     //   name: 'Akka',
     //   version: '1.0.0',

@@ -40,7 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
   year = new Date().getFullYear();
   logo = require('../assets/logo2.png');
   navigation = [
-    { link: 'about', label: '홈' },
+    { link: 'home', label: '홈' },
     { link: 'lectures', label: '강좌' },
     // { link: 'articles', label: '블로그' },
     // { link: 'contribute', label: '기여하기' },

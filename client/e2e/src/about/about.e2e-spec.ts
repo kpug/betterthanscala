@@ -1,10 +1,10 @@
-import { AboutPage } from './about.po';
+import { HomePage } from './home.po';
 import { getCurrentRouteUrl } from '../utils';
 
-describe('About Page', () => {
-  let page: AboutPage;
+describe('Home Page', () => {
+  let page: HomePage;
 
-  beforeEach(() => (page = new AboutPage()));
+  beforeEach(() => (page = new HomePage()));
 
   it('should display main heading', () => {
     page.navigateTo();

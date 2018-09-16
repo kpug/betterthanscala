@@ -1,12 +1,12 @@
 import { browser, by, element } from 'protractor';
 
-export class AboutPage {
+export class HomePage {
   navigateTo() {
-    return browser.get('/about');
+    return browser.get('/home');
   }
 
   getParagraphText() {
-    return element(by.css('anms-about h1')).getText();
+    return element(by.css('anms-home h1')).getText();
   }
 
   getGettingStarted() {

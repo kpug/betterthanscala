@@ -1,3 +1,20 @@
-<p>
-  articles works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="main-heading">블로그</h1>
+    </div>
+  </div>
+  <div class="row article-area" *ngFor="let article of articles">
+    <div class="col-md-12 col-lg-12" [ngClass]="routeAnimationsElements">
+      <h1>
+        <a href="#">{{ article.title }}</a>
+      </h1>
+      <p>
+        <span>작성자: {{ article.author }}</span> <span class="article-date"> 작성일: {{ article.date | date:'yyyy.mm.dd HH:mm:ss' }} </span>
+      </p>
+      <p>
+        {{ article.content }}
+      </p>
+    </div>
+  </div>
+</div>

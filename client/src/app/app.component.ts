@@ -121,7 +121,8 @@ export class AppComponent implements OnInit, OnDestroy {
     const hours = new Date().getHours();
     const effectiveTheme = (autoNightMode && (hours >= 20 || hours <= 6)
       ? NIGHT_MODE_THEME
-      : theme
+      // : theme
+      : NIGHT_MODE_THEME
     ).toLowerCase();
     this.componentCssClass = effectiveTheme;
     const classList = this.overlayContainer.getContainerElement().classList;

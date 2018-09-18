@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleContentComponent implements OnInit {
 
+  content = `# hello world
+  | a | b | c | d |
+  |---|---|---|---|
+  | e | f | g | h |`
+
   constructor() { }
 
   ngOnInit() {

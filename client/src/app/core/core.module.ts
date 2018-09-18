@@ -15,6 +15,8 @@ import { AuthEffects } from './auth/auth.effects';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AnimationsService } from './animations/animations.service';
 
+import { MarkdownModule } from 'ngx-markdown';
+
 export const metaReducers: MetaReducer<any>[] = [initStateFromLocalStorage];
 
 if (!environment.production) {
@@ -37,7 +39,8 @@ if (!environment.production) {
       },
       { metaReducers }
     ),
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects]),
+    MarkdownModule.forRoot()
   ],
   declarations: [],
   providers: [LocalStorageService, AuthGuardService, AnimationsService]

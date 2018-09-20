@@ -1,3 +1,13 @@
-<p>
-  <markdown [data]="content"></markdown>
-</p>
+<div class="container">
+  <div class="row">
+    <h1> {{ title }} </h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-8">
+      <markdown [data]="content"></markdown>
+    </div>
+    <div class="col-sm-0 col-md-4 col-lg-4">
+      More detail settings
+    </div>
+  </div>
+</div>

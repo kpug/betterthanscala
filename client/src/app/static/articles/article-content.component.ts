@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleContentComponent implements OnInit {
 
+  title = '스칼라 언어 사용하기'
+  
   content = `# hello world
   | a | b | c | d |
   |---|---|---|---|

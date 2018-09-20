@@ -17,4 +17,5 @@ export const environment = {
     angularCli: packageJson.devDependencies['@angular/cli'],
     typescript: packageJson.devDependencies['typescript']
   }
+  
 };

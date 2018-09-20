@@ -12,13 +12,16 @@ import { ArticleContentComponent } from './articles/article-content.component';
 import { ContributeComponent } from './contribute/contribute.component';
 import { SupportComponent } from './support/support.component';
 
+import { ArticleService } from './articles/articles.service';
+
 @NgModule({
   imports: [
     SharedModule,
     StaticRoutingModule,
     MarkdownModule.forChild()
   ],
-  declarations: [HomeComponent, LecturesComponent, ArticlesComponent, ArticleContentComponent, ContributeComponent, SupportComponent]
+  declarations: [HomeComponent, LecturesComponent, ArticlesComponent, ArticleContentComponent, ContributeComponent, SupportComponent],
+  providers: [ArticleService]
 })
 
 export class StaticModule { }

@@ -21,5 +21,9 @@ export const environment = {
       packageJson.dependencies['@fortawesome/fontawesome-free-webfonts'],
     angularCli: packageJson.devDependencies['@angular/cli'],
     typescript: packageJson.devDependencies['typescript']
+  },
+  api: {
+    host: 'http://localhost:9000'
+    // zaggle: 'http://210.89.178.101:9000'
   }
 };

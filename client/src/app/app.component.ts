@@ -49,7 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ];
   navigationSideMenu = [
     ...this.navigation,
-    { link: 'settings', label: 'Settings' }
+    // { link: 'settings', label: 'Settings' }
   ];
   isAuthenticated;
 

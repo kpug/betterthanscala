@@ -10,7 +10,7 @@ import play.api.mvc._
   * @author Lawrence
   * @since 2018. 9. 23.
   * @note
-  * @version
+  * @version 0.0.1
   */
 @Singleton
 class ImageController @Inject()(cc: ControllerComponents) extends AbstractController(cc){

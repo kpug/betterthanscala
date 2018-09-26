@@ -10,10 +10,7 @@ import { ArticleService } from './articles.service';
 })
 export class ArticleContentComponent implements OnInit {
 
-  article = {
-    title: '',
-    content: ''
-  }
+  article
 
   constructor(private route: ActivatedRoute,
     private router: Router,

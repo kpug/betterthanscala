@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { LecturesComponent } from './lectures/lectures.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticleContentComponent } from './articles/article-content.component';
+import { ArticleSidebarComponent } from './articles/article-sidebar.component';
 import { ContributeComponent } from './contribute/contribute.component';
 import { SupportComponent } from './support/support.component';
 
@@ -20,7 +21,15 @@ import { ArticleService } from './articles/articles.service';
     StaticRoutingModule,
     MarkdownModule.forChild()
   ],
-  declarations: [HomeComponent, LecturesComponent, ArticlesComponent, ArticleContentComponent, ContributeComponent, SupportComponent],
+  declarations: [
+    HomeComponent
+    , LecturesComponent
+    , ArticlesComponent
+    , ArticleContentComponent
+    , ArticleSidebarComponent
+    , ContributeComponent
+    , SupportComponent
+  ],
   providers: [ArticleService]
 })
 

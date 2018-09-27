@@ -6,19 +6,10 @@
   </div>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-8">
-      <markdown [data]="article.content"></markdown>
+      <markdown *ngIf='article.content' [data]="article.content"></markdown>
     </div>
     <div class="col-sm-0 col-md-4 col-lg-4">
-      <h5>
-        Recent Posts
-      </h5>
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-      </ul>
+      <anms-article-sidebar></anms-article-sidebar>
     </div>
   </div>
 </div>

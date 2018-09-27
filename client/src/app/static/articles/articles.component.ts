@@ -1,5 +1,5 @@
 import { Component, OnInit, Optional } from '@angular/core';
-import { ArticleService } from './articles.service';
+import { ArticleService, Article } from './articles.service';
 
 @Component({
   selector: 'anms-articles',
@@ -8,7 +8,7 @@ import { ArticleService } from './articles.service';
 })
 export class ArticlesComponent implements OnInit {
 
-  articles
+  articles: Array<Article>
 
   constructor(private articleService: ArticleService) { }
 

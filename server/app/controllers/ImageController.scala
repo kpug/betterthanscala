@@ -2,7 +2,7 @@ package controllers
 
 import java.nio.file.Paths
 
-import javax.inject.Inject
+import javax.inject._
 import play.api.mvc._
 
 /**

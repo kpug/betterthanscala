@@ -9,17 +9,17 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {
-    path: 'settings',
-    component: SettingsComponent,
-    data: {
-      title: 'Settings'
-    }
-  },
-  {
-    path: 'examples',
-    loadChildren: 'app/examples/examples.module#ExamplesModule'
-  },
+  // {
+  //   path: 'settings',
+  //   component: SettingsComponent,
+  //   data: {
+  //     title: 'Settings'
+  //   }
+  // },
+  // {
+  //   path: 'examples',
+  //   loadChildren: 'app/examples/examples.module#ExamplesModule'
+  // },
   {
     path: '**',
     redirectTo: 'home'

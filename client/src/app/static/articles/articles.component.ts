@@ -9,13 +9,13 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
 })
 export class ArticlesComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  articles: Array<Article>
+  articles: Array<Article>;
 
   constructor(private articleService: ArticleService) { }
 
   ngOnInit() {
     this.articleService.get().subscribe(data => {
-      this.articles = data
-    })
+      this.articles = data;
+    });
   }
 }

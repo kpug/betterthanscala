@@ -35,6 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
   @HostBinding('class') componentCssClass;
 
   isProd = env.production;
+  isHome = true;
   envName = env.envName;
   version = env.versions.app;
   year = new Date().getFullYear();
@@ -148,6 +149,7 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe(event => {
         if (event instanceof ActivationEnd) {
           this.setPageTitle(event);
+          this.setIsHome(event);
         }
 
         if (event instanceof NavigationEnd) {
@@ -165,5 +167,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.titleService.setTitle(
       title ? `${title} - ${env.appName}` : env.appName
     );
+  }
+
+  private setIsHome(event: ActivationEnd) {
+    const { title }  = event.snapshot.data;
+    this.isHome = title === 'Home' ? true : false;
   }
 }

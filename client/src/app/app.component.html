@@ -75,7 +75,7 @@
       <router-outlet #o="outlet"></router-outlet>
     </div>
 
-    <div class="footer">
+    <div class="footer" *ngIf="isHome">
       <div class="row">
         <div class="col-sm-12 links">
           <a href="https://www.github.com/kpug" target="_blank">

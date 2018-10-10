@@ -2,7 +2,7 @@ import browser from 'browser-detect';
 import { Title } from '@angular/platform-browser';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
-import { ActivationEnd, Router, NavigationEnd } from '@angular/router';
+import { ActivationEnd, Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { takeUntil, filter } from 'rxjs/operators';
@@ -60,7 +60,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     private titleService: Title,
     private animationService: AnimationsService
-  ) {}
+  ) { }
 
   private static trackPageView(event: NavigationEnd) {
     (<any>window).ga('set', 'page', event.urlAfterRedirects);
@@ -170,7 +170,19 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private setIsHome(event: ActivationEnd) {
-    const { title }  = event.snapshot.data;
+    const { title } = event.snapshot.data;
     this.isHome = title === 'Home' ? true : false;
+  }
+
+  private getState(o: RouterOutlet) {
+    if (o.activatedRoute.snapshot.params && o.activatedRoute.snapshot.params.id) {
+      return {
+        value: o.activatedRoute.snapshot.params.id
+      };
+    } else {
+      return {
+        value: o.activatedRoute.routeConfig.path
+      };
+    }
   }
 }

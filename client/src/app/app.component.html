@@ -71,7 +71,7 @@
   <div class="wrapper">
 
     <div class="content"
-         [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path">
+         [@routeAnimations]="o.isActivated && getState(o)">
       <router-outlet #o="outlet"></router-outlet>
     </div>
 

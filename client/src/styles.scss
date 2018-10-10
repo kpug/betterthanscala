@@ -27,6 +27,9 @@
 @import 'app/examples/theming/child/child.component.scss-theme';
 @import 'app/examples/examples/examples.component.scss-theme';
 
+@import '~@ngx-share/button/styles/share-buttons';
+@import '~@ngx-share/button/styles/themes/default/default-theme';
+
 @mixin custom-components-theme($theme) {
   @include anms-styles-reset-theme($theme);
   @include anms-app-component-theme($theme);

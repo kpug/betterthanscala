@@ -70,4 +70,4 @@ import { BigInputActionComponent } from './big-input/big-input-action.component'
     BigInputActionComponent
   ]
 })
-export class SharedModule {}
+export class SharedModule { }

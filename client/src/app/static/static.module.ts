@@ -13,13 +13,16 @@ import { ArticleSidebarComponent } from './articles/article-sidebar.component';
 import { ContributeComponent } from './contribute/contribute.component';
 import { SupportComponent } from './support/support.component';
 
+import { ShareButtonsModule } from '@ngx-share/buttons';
+
 import { ArticleService } from './articles/articles.service';
 
 @NgModule({
   imports: [
     SharedModule,
     StaticRoutingModule,
-    MarkdownModule.forChild()
+    MarkdownModule.forChild(),
+    ShareButtonsModule.forRoot()
   ],
   declarations: [
     HomeComponent
@@ -33,4 +36,4 @@ import { ArticleService } from './articles/articles.service';
   providers: [ArticleService]
 })
 
-export class StaticModule { }
+export class StaticModule {}

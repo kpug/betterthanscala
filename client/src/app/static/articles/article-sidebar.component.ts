@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShareButtons } from '@ngx-share/core';
 
 import { ArticleService, Article } from './articles.service';
 
@@ -9,14 +10,15 @@ import { ArticleService, Article } from './articles.service';
 })
 export class ArticleSidebarComponent implements OnInit {
 
-  articles: Array<Article>
+  articles: Array<Article>;
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private articleService: ArticleService
+    , private share: ShareButtons) { }
 
   ngOnInit() {
     this.articleService.get().subscribe(response =>
       this.articles = response
-    )
+    );
   }
 
 }

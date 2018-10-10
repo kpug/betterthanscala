@@ -6,3 +6,10 @@
     <a [routerLink]="['/articles', article.id]" routerLinkActive="active">{{ article.title }}</a>
   </li>
 </ul>
+<share-buttons [theme]="'default'"
+ [include]="['facebook','twitter','google','linkedin']"
+ [show]="5"
+ [showText]="false"
+ [showCount]="true"
+ [autoSetMeta]="false"
+></share-buttons>

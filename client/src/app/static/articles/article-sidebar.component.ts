@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ShareButtons } from '@ngx-share/core';
 
 import { ArticleService, Article } from './articles.service';
@@ -9,6 +9,9 @@ import { ArticleService, Article } from './articles.service';
   styleUrls: ['./article-sidebar.component.scss']
 })
 export class ArticleSidebarComponent implements OnInit {
+
+  @Input()
+  isShare: boolean = false;
 
   articles: Array<Article>;
 

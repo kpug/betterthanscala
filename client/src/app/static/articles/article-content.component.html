@@ -1,15 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h1> {{ article.title }} </h1>
-    </div>
-  </div>
-  <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-8">
+      <h1> {{ article.title }} </h1>
       <markdown *ngIf='article.content' [data]="article.content"></markdown>
     </div>
-    <div class="col-sm-0 col-md-4 col-lg-4">
-      <anms-article-sidebar></anms-article-sidebar>
+    <div class="col-md-4 col-lg-4">
+      <anms-article-sidebar [isShare]="true"></anms-article-sidebar>
     </div>
   </div>
 </div>

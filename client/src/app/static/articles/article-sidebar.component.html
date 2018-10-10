@@ -1,15 +1,13 @@
-<h5>
-  Recent Posts
-</h5>
+<h4>
+  최근 포스트
+</h4>
 <ul>
   <li *ngFor="let article of articles">
     <a [routerLink]="['/articles', article.id]" routerLinkActive="active">{{ article.title }}</a>
   </li>
 </ul>
-<share-buttons [theme]="'default'"
- [include]="['facebook','twitter','google','linkedin']"
- [show]="5"
- [showText]="false"
- [showCount]="true"
- [autoSetMeta]="false"
-></share-buttons>
+<h4>
+  공유하기
+</h4>
+<share-buttons *ngIf="isShare" [theme]="'default'" [include]="['facebook','twitter','google','linkedin']" [show]="5"
+  [showText]="false" [showCount]="true" [autoSetMeta]="false"></share-buttons>

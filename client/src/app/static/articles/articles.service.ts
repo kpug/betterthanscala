@@ -21,10 +21,10 @@ export class ArticleService {
   constructor(private httpClient: HttpClient) { }
 
   get(): Observable<Article[]> {
-    return this.httpClient.get<Article[]>(this.apiUrl)
+    return this.httpClient.get<Article[]>(this.apiUrl);
   }
 
   getById(id): Observable<Article> {
-    return this.httpClient.get<Article>(`${this.apiUrl}/${id}`)
+    return this.httpClient.get<Article>(`${this.apiUrl}/${id}`);
   }
 }

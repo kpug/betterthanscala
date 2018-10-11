@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row align-items-end">
-    <div class="col-md-6 col-lg-4" *ngFor="let lecture of lectures"[ngClass]="routeAnimationsElements">
+    <div class="col-md-6 col-lg-4" *ngFor="let lecture of lectures" [ngClass]="routeAnimationsElements">
       <mat-card>
         <mat-card-title><code *ngIf="lecture.version">{{ lecture.version }}</code>{{ lecture.name }}</mat-card-title>
         <mat-card-subtitle>

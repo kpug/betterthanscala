@@ -1,13 +1,13 @@
 <h4>
   최근 포스트
 </h4>
-<ul>
-  <li *ngFor="let article of articles">
+<mat-nav-list>
+  <mat-list-item *ngFor="let article of articles">
     <a [routerLink]="['/articles', article.id]" routerLinkActive="active">{{ article.title }}</a>
-  </li>
-</ul>
+  </mat-list-item>
+</mat-nav-list>
 <div *ngIf="isShare">
-  <h4>
+  <h4 class="head-share">
     공유하기
   </h4>
   <share-buttons [theme]="'default'" [include]="['facebook','twitter','google','linkedin']" [show]="5" [showText]="false"

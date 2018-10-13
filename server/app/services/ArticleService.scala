@@ -29,10 +29,40 @@ class ArticleService @Inject()() {
       date = LocalDateTime.now,
       author = "Lawrence Kim",
       category = List("Scala", "Spark", "Akka", "ScalaDays2018")
+    ),
+    Article(id = 3,
+      title = "이 번주 스칼라 소식",
+      content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
+      date = LocalDateTime.now,
+      author = "Lawrence Kim",
+      category = List("Scala", "Spark", "Akka", "ScalaDays2018")
+    ),
+    Article(id = 4,
+      title = "이 번주 스칼라 소식",
+      content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
+      date = LocalDateTime.now,
+      author = "Lawrence Kim",
+      category = List("Scala", "Spark", "Akka", "ScalaDays2018")
+    ),
+    Article(id = 5,
+      title = "이 번주 스칼라 소식",
+      content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
+      date = LocalDateTime.now,
+      author = "Lawrence Kim",
+      category = List("Scala", "Spark", "Akka", "ScalaDays2018")
+    ),
+    Article(id = 6,
+      title = "이 번주 스칼라 소식",
+      content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
+      date = LocalDateTime.now,
+      author = "Lawrence Kim",
+      category = List("Scala", "Spark", "Akka", "ScalaDays2018")
     )
   )
 
-  def get: List[Article] = articles
+  def get(count: Option[Int]): List[Article] = {
+    articles.take(count.getOrElse(Integer.MAX_VALUE))
+  }
 
   def getById(id: Long): Article = articles.filter(_.id == id).head
 

@@ -17,8 +17,8 @@ import services.ArticleService
 class ArticleController @Inject()(cc: ControllerComponents,
                                   articleService: ArticleService) extends AbstractController(cc){
 
-  def get() = Action { implicit request =>
-    Ok(Json.toJson(articleService.get))
+  def get(count: Option[Int]) = Action { implicit request =>
+    Ok(Json.toJson(articleService.get(count)))
   }
 
   def getById(id: Long) = Action { implicit request =>

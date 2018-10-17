@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 // import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
@@ -16,12 +16,14 @@ export class Article {
 @Injectable()
 export class ArticleService {
 
-  apiUrl: string = `${environment.api.host}/api/article`;
+  apiUrl = `${environment.api.host}/api/article`;
 
   constructor(private httpClient: HttpClient) { }
 
-  get(): Observable<Article[]> {
-    return this.httpClient.get<Article[]>(this.apiUrl);
+  get(count: number = 5): Observable<Article[]> {
+    return this.httpClient.get<Article[]>(this.apiUrl, { params: {
+      count: String(count)
+    }});
   }
 
   getById(id): Observable<Article> {

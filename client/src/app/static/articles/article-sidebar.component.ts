@@ -11,7 +11,7 @@ import { ArticleService, Article } from './articles.service';
 export class ArticleSidebarComponent implements OnInit {
 
   @Input()
-  isShare: boolean = false;
+  isShare = false;
 
   articles: Array<Article>;
 

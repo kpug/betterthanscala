@@ -2,9 +2,7 @@
   최근 포스트
 </h4>
 <mat-nav-list>
-  <mat-list-item *ngFor="let article of articles">
-    <a [routerLink]="['/articles', article.id]" routerLinkActive="active">{{ article.title }}</a>
-  </mat-list-item>
+  <a mat-list-item [routerLink]="['/articles', article.id]" *ngFor="let article of articles"> {{ article.title }} </a>
 </mat-nav-list>
 <div *ngIf="isShare">
   <h4 class="head-share">

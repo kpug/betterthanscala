@@ -18,7 +18,15 @@ class ArticleController @Inject()(cc: ControllerComponents,
                                   articleService: ArticleService) extends AbstractController(cc){
 
   def get(count: Option[Int]) = Action { implicit request =>
-    Ok(Json.toJson(articleService.get(count)))
+
+    val articles = articleService.get(count)
+
+    articles.size match {
+      case 0 =>
+        NoContent
+      case _ =>
+        Ok(Json.toJson(articles))
+    }
   }
 
   def getById(id: Long) = Action { implicit request =>

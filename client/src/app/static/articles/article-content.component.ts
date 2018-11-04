@@ -34,7 +34,7 @@ export class ArticleContentComponent implements OnInit, OnDestroy {
   initialiseInvites() {
     // // console.log('here')
     const id = +this.route.snapshot.paramMap.get('id');
-    this.articleService.getById(id).subscribe(response => {
+    this.articleService.getById$(id).subscribe(response => {
       this.article = response;
     });
   }

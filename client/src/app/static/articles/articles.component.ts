@@ -13,15 +13,51 @@ import { convertPropertyBindingBuiltins } from '@angular/compiler/src/compiler_u
 export class ArticlesComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   articles: Array<Article>;
+  pages: number;
+  start: number;
+  end: number;
 
   constructor(private articleService: ArticleService,
     private route: ActivatedRoute) {
-      const pages = +this.route.snapshot.queryParams.pages;
     }
 
   ngOnInit() {
-    const { articles } = this.route.snapshot.data;
+    const [articles, total] = this.route.snapshot.data.response;
     this.articles = articles;
+    this.pages = this.getPages();
+    this.start = this.calcStartPages(this.pages, total);
+    this.end = this.calcEndPages(this.pages, total);
+    console.log(this.pages, this.start, this.end);
+  }
+
+
+  getPages() {
+    const pages = +this.route.snapshot.queryParams.pages;
+    return Number.isNaN(pages) ? 1 : pages;
+  }
+
+  calcStartPages(pages: number, total: number) {
+    if ( total <= 5 ) {
+      return 1;
+    } else if (pages <= 2) {
+      return 1;
+    } else if (pages >= total - 1 ) {
+      return total - 4;
+    } else {
+      return pages - 2;
+    }
+  }
+
+  calcEndPages(pages: number, total: number) {
+    if ( total <= 5 ) {
+      return total;
+    } else if (pages <= 2) {
+      return 5;
+    } else if ( pages >= total - 1 ) {
+      return total;
+    } else {
+      return pages + 2;
+    }
   }
 
   previousClick() {

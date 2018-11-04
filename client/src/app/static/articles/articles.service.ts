@@ -20,13 +20,16 @@ export class ArticleService {
 
   constructor(private httpClient: HttpClient) { }
 
-  get(count: number = 5): Observable<Article[]> {
-    return this.httpClient.get<Article[]>(this.apiUrl, { params: {
-      count: String(count)
-    }});
+  get$(count: number = 5): Observable<HttpResponse<Article[]>> {
+    return this.httpClient.get<Article[]>(this.apiUrl, {
+      params: {
+        count: String(count)
+      },
+      observe: 'response'
+    });
   }
 
-  getById(id): Observable<Article> {
+  getById$(id): Observable<Article> {
     return this.httpClient.get<Article>(`${this.apiUrl}/${id}`);
   }
 }

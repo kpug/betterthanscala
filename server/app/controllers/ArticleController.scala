@@ -27,7 +27,9 @@ class ArticleController @Inject()(cc: ControllerComponents,
         NoContent
       case _ =>
         Ok(Json.toJson(articles))
-          .withHeaders("X-total-count" -> total.toString)
+          .withHeaders("X-total-count" -> total.toString,
+          "Access-control-expose-headers" -> "*")
+
     }
   }
 

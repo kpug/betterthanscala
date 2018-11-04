@@ -11,7 +11,7 @@ import { ArticlesListResolver } from './articles/articles-list.resolver';
 const routes: Routes = [
   { path: 'home', component: HomeComponent, data: { title: 'Home' } },
   { path: 'lectures', component: LecturesComponent, data: { title: 'Lectures' } },
-  { path: 'articles', component: ArticlesComponent, data: { title: 'Articles' }, resolve: { articles: ArticlesListResolver }},
+  { path: 'articles', component: ArticlesComponent, data: { title: 'Articles' }, resolve: { response: ArticlesListResolver }},
   {
     path: 'articles/:id',
     component: ArticleContentComponent,

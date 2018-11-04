@@ -19,8 +19,8 @@ export class ArticleSidebarComponent implements OnInit {
     , private share: ShareButtons) { }
 
   ngOnInit() {
-    this.articleService.get().subscribe(response =>
-      this.articles = response
+    this.articleService.get$().subscribe(response =>
+      this.articles = response.body
     );
   }
 

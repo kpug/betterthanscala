@@ -60,6 +60,8 @@ class ArticleService @Inject()() {
     )
   )
 
+  def count(): Long = articles.size
+
   def get(count: Option[Int]): List[Article] = {
     articles.take(count.getOrElse(Integer.MAX_VALUE))
   }

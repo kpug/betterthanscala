@@ -20,12 +20,14 @@ class ArticleController @Inject()(cc: ControllerComponents,
   def get(count: Option[Int]) = Action { implicit request =>
 
     val articles = articleService.get(count)
+    val total = articleService.count
 
     articles.size match {
       case 0 =>
         NoContent
       case _ =>
         Ok(Json.toJson(articles))
+          .withHeaders("X-total-count" -> total.toString)
     }
   }
 

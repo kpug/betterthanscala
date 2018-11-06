@@ -2,7 +2,7 @@ import { Component, OnInit, Optional } from '@angular/core';
 import { ArticleService, Article } from './articles.service';
 
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { convertPropertyBindingBuiltins } from '@angular/compiler/src/compiler_util/expression_converter';
 import { FormArrayName } from '@angular/forms';
 import * as _ from 'lodash';
@@ -20,8 +20,8 @@ export class ArticlesComponent implements OnInit {
   pageIndexes;
 
   constructor(private articleService: ArticleService,
-    private route: ActivatedRoute) {
-    }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     const [articles, totalCount] = this.route.snapshot.data.response;
@@ -85,7 +85,7 @@ export class ArticlesComponent implements OnInit {
    * @param number
    */
   onClickReloadPage(number) {
-    console.log(number);
+    this.router.navigate(['/articles', { pages: number }]);
   }
 
 }

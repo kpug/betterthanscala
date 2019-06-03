@@ -10,23 +10,39 @@ import { ArticlesListResolver } from './articles/articles-list.resolver';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, data: { title: 'Home' } },
-  { path: 'lectures', component: LecturesComponent, data: { title: 'Lectures' } },
-  { path: 'articles', component: ArticlesComponent, data: { title: 'Articles' }, resolve: { response: ArticlesListResolver }},
+  {
+    path: 'lectures',
+    component: LecturesComponent,
+    data: { title: 'Lectures' }
+  },
+  {
+    path: 'articles',
+    component: ArticlesComponent,
+    data: { title: 'Articles' },
+    resolve: { response: ArticlesListResolver },
+    runGuardsAndResolvers: 'always'
+  },
   {
     path: 'articles/:id',
     component: ArticleContentComponent,
     data: { title: 'Articles' },
     runGuardsAndResolvers: 'always'
   },
-  { path: 'contribute', component: ContributeComponent, data: { title: 'Contribute' } },
-  { path: 'support', component: ContributeComponent, data: { title: 'Contribute' } },
+  {
+    path: 'contribute',
+    component: ContributeComponent,
+    data: { title: 'Contribute' }
+  },
+  {
+    path: 'support',
+    component: ContributeComponent,
+    data: { title: 'Contribute' }
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [
-    ArticlesListResolver
-  ]
+  providers: [ArticlesListResolver]
 })
-export class StaticRoutingModule { }
+export class StaticRoutingModule {}

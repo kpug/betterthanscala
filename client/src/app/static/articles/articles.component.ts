@@ -1,44 +1,82 @@
-import { Component, OnInit, Optional } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { Component, OnInit, OnDestroy, Optional } from '@angular/core';
 import { ArticleService, Article } from './articles.service';
 
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { convertPropertyBindingBuiltins } from '@angular/compiler/src/compiler_util/expression_converter';
 import { FormArrayName } from '@angular/forms';
 import * as _ from 'lodash';
+import { callLifecycleHooksChildrenFirst } from '@angular/core/src/view/provider';
 @Component({
   selector: 'anms-articles',
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.scss']
 })
-export class ArticlesComponent implements OnInit {
+export class ArticlesComponent implements OnInit, OnDestroy {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   articles: Array<Article>;
   pages: number;
   currentIndex: number;
   pageIndexes: Array<number>;
   totalPages: number;
+  navigationSubscription;
 
   constructor(private articleService: ArticleService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router) {
+
+    this.route.params.subscribe((values) => {
+        const [articles, totalCount] = this.route.snapshot.data.response;
+
+        const countPerPage = 5;
+        this.totalPages = Math.ceil(totalCount / countPerPage);
+
+        this.pages = Number.isNaN(+values.pages) ? 1 : +values.pages;
+        this.articles = articles;
+
+        this.currentIndex = Math.floor((this.pages - 1) / 5);
+
+        const startPages = this.currentIndex * 5 + 1;
+        const endPages = Math.min(startPages + 5, this.totalPages);
+
+      this.pageIndexes = _.range(startPages, endPages + 1);
+      this.call(values);
+      });
+    }
+
+  // initialiseInvites() {
+  // }
+  call(values) {
+    this.articleService.get$(5, values.pages)
+    .subscribe(resp => {
+      const result: [Article[], number] = [resp.body, +resp.headers.get('x-total-count')];
+      this.articles = result[0];
+    });
+  }
 
   ngOnInit() {
-    const [articles, totalCount] = this.route.snapshot.data.response;
-    const countPerPage = 5;
-    this.totalPages = Math.ceil(totalCount / countPerPage);
+    // const [articles, totalCount] = this.route.snapshot.data.response;
+    // const countPerPage = 5;
+    // this.totalPages = Math.ceil(totalCount / countPerPage);
 
-    // for test
-    // this.totalPages = 6;
+    // this.totalPages = 5;
 
-    this.articles = articles;
-    this.pages = this.getPages(this.totalPages);
-    this.currentIndex = Math.floor((this.pages - 1) / 5);
-    const startPages = this.currentIndex * 5 + 1;
-    const endPages = Math.min(startPages + 5, this.totalPages);
-    this.pageIndexes = _.range(startPages, endPages);
-    console.log(this.totalPages);
+    // this.articles = articles;
+    // this.pages = this.getPages(this.totalPages);
+    // this.currentIndex = Math.floor((this.pages - 1) / 5);
+
+    // const startPages = this.currentIndex * 5 + 1;
+    // const endPages = Math.min(startPages + 5, this.totalPages);
+
+    // this.pageIndexes = _.range(startPages, endPages + 1);
   }
+
+  // ngOnDestroy() {
+  //   if (this.navigationSubscription) {
+  //     this.navigationSubscription.unsubscribe();
+  //   }
+  // }
 
   getPages(totalPages) {
     const pages = +this.route.snapshot.queryParams.pages;

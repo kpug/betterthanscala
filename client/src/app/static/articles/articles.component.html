@@ -5,8 +5,8 @@
     </div> -->
   </div>
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-8">
-      <div class="article-area" *ngFor="let article of articles" [ngClass]="routeAnimationsElements">
+    <div class="col-sm-12 col-md-8 col-lg-8 article-area">
+      <div class="article" *ngFor="let article of articles" [ngClass]="routeAnimationsElements">
         <a [routerLink]="['/articles', article.id]" routerLinkActive="active">
           {{ article.title }}
         </a>
@@ -18,17 +18,19 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-4">
           <a *ngIf="currentIndex === 0" mat-icon-button target="_blank" disabled>
             <mat-icon fontSet="fas" fontIcon="fa-angle-left" (click)="onClickPreviousArrow()"></mat-icon>
           </a>
           <a *ngIf="currentIndex !== 0" mat-icon-button target="_blank">
             <mat-icon fontSet="fas" fontIcon="fa-angle-left" (click)="onClickPreviousArrow()"></mat-icon>
           </a>
+
           <span *ngFor="let inx of pageIndexes">
             <a *ngIf="inx === pages" color='accent' mat-icon-button disabled>{{ inx }}</a>
             <a *ngIf="inx !== pages" mat-icon-button (click)="onClickReloadPage(inx)">{{ inx }}</a>
           </span>
+
           <a *ngIf="((currentIndex+1)*5+1) > totalPages" mat-icon-button target="_blank" disabled>
             <mat-icon fontSet="fas" fontIcon="fa-angle-right" (click)="onClickNextArrow();"></mat-icon>
           </a>

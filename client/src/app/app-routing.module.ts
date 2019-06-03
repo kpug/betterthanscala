@@ -30,7 +30,6 @@ const routes: Routes = [
 ];
 
 export class CustomReuseStrategy implements RouteReuseStrategy {
-
   handlers: { [key: string]: DetachedRouteHandle } = {};
 
   shouldDetach(route: ActivatedRouteSnapshot): boolean {
@@ -52,18 +51,26 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
     return this.handlers[route.routeConfig.path];
   }
 
-  shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {
-    return future.routeConfig === curr.routeConfig && curr.component !== ArticleContentComponent;
+  shouldReuseRoute(
+    future: ActivatedRouteSnapshot,
+    curr: ActivatedRouteSnapshot
+  ): boolean {
+    return (
+      future.routeConfig === curr.routeConfig &&
+      curr.component !== ArticleContentComponent
+    );
   }
 }
 
 @NgModule({
   // useHash supports github.io demo page, remove in your app
-  imports: [RouterModule.forRoot(routes)],
-  providers: [{
-    provide: RouteReuseStrategy,
-    useClass: CustomReuseStrategy
-  }],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
+  providers: [
+    {
+      provide: RouteReuseStrategy,
+      useClass: CustomReuseStrategy
+    }
+  ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

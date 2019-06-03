@@ -4,7 +4,7 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET        /api/article            controllers.ArticleController.get(count: Option[Int])
+GET        /api/article            controllers.ArticleController.get(count: Option[Int], pages: Option[Int])
 GET        /api/article/:id        controllers.ArticleController.getById(id: Long)
 
 POST       /image/upload            controllers.ImageController.upload

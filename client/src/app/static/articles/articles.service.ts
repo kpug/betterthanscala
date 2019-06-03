@@ -20,10 +20,11 @@ export class ArticleService {
 
   constructor(private httpClient: HttpClient) { }
 
-  get$(count: number = 5): Observable<HttpResponse<Article[]>> {
+  get$(count: number = 5, pages: number = 1): Observable<HttpResponse<Article[]>> {
     return this.httpClient.get<Article[]>(this.apiUrl, {
       params: {
-        count: String(count)
+        count: String(count),
+        pages: String(pages)
       },
       observe: 'response'
     });

@@ -17,9 +17,9 @@ import services.ArticleService
 class ArticleController @Inject()(cc: ControllerComponents,
                                   articleService: ArticleService) extends AbstractController(cc){
 
-  def get(count: Option[Int]) = Action { implicit request =>
+  def get(count: Option[Int], pages: Option[Int]) = Action { implicit request =>
 
-    val articles = articleService.get(count)
+    val articles = articleService.get(count, pages)
     val total = articleService.count
 
     articles.size match {

@@ -24,35 +24,35 @@ class ArticleService @Inject()() {
       category = List("Scala", "basic", "trait", "ddd")
     ),
     Article(id = 2,
-      title = "이 번주 스칼라 소식",
+      title = "이 번주 스칼라 소식1",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
       date = LocalDateTime.now,
       author = "Lawrence Kim",
       category = List("Scala", "Spark", "Akka", "ScalaDays2018")
     ),
     Article(id = 3,
-      title = "이 번주 스칼라 소식",
+      title = "이 번주 스칼라 소식2",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
       date = LocalDateTime.now,
       author = "Lawrence Kim",
       category = List("Scala", "Spark", "Akka", "ScalaDays2018")
     ),
     Article(id = 4,
-      title = "이 번주 스칼라 소식",
+      title = "이 번주 스칼라 소식3",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
       date = LocalDateTime.now,
       author = "Lawrence Kim",
       category = List("Scala", "Spark", "Akka", "ScalaDays2018")
     ),
     Article(id = 5,
-      title = "이 번주 스칼라 소식",
+      title = "이 번주 스칼라 소식4",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
       date = LocalDateTime.now,
       author = "Lawrence Kim",
       category = List("Scala", "Spark", "Akka", "ScalaDays2018")
     ),
     Article(id = 6,
-      title = "이 번주 스칼라 소식",
+      title = "이 번주 스칼라 소식5",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
       date = LocalDateTime.now,
       author = "Lawrence Kim",
@@ -62,8 +62,10 @@ class ArticleService @Inject()() {
 
   def count(): Long = articles.size
 
-  def get(count: Option[Int]): List[Article] = {
-    articles.take(count.getOrElse(Integer.MAX_VALUE))
+  def get(count: Option[Int], pages: Option[Int]): List[Article] = {
+    articles
+      .drop((pages.getOrElse(1) - 1) * 5)
+      .take(count.getOrElse(Integer.MAX_VALUE))
   }
 
   def getById(id: Long): Article = articles.filter(_.id == id).head

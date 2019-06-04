@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-8">
+    <div class="col-sm-12 col-md-8 col-lg-8 article-area">
       <h1> {{ article.title }} </h1>
+      <span class="article-date"> {{ article.date | date:'yyyy.MM.dd' }} </span>
+      <div>
+        <a href="" class="article-tag" *ngFor="let tag of article.tags" class="article-tag"
+          (click)="onClickTag($event, tag)"> #{{ tag }}
+        </a>
+      </div>
       <markdown *ngIf='article.content' [data]="article.content"></markdown>
     </div>
     <div class="col-md-4 col-lg-4">

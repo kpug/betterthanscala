@@ -11,10 +11,12 @@
 }
 
 .article {
-  padding-bottom: 30px;
+  border-bottom: dotted 1px #c9c9c9;
+  padding-top: 20px;
 }
 
 .article-content {
+  margin-top: 1rem;
   color: #585858;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -39,6 +41,6 @@
   padding-right: 20px;
 }
 
-a.h1 {
+.article-title {
   font-size: 20px;
 }

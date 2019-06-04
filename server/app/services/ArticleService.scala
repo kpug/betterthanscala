@@ -18,45 +18,45 @@ class ArticleService @Inject()() {
   val articles = List(
     Article(id = 1,
       title = "스칼라 언어에서 트레이트 사용하기",
-      content = "트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다.",
+      content = "트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다. 트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다. 트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다. 트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다. 트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다. 트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다. 트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다. 트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다.",
       date = LocalDateTime.now,
       author = "Lawrence Kim",
-      category = List("Scala", "basic", "trait", "ddd")
+      tags = List("Scala", "basic", "trait", "ddd")
     ),
     Article(id = 2,
       title = "이 번주 스칼라 소식1",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
       date = LocalDateTime.now,
       author = "Lawrence Kim",
-      category = List("Scala", "Spark", "Akka", "ScalaDays2018")
+      tags = List("Scala", "Spark", "Akka", "ScalaDays2018")
     ),
     Article(id = 3,
       title = "이 번주 스칼라 소식2",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
       date = LocalDateTime.now,
       author = "Lawrence Kim",
-      category = List("Scala", "Spark", "Akka", "ScalaDays2018")
+      tags = List("Scala", "Spark", "Akka", "ScalaDays2018")
     ),
     Article(id = 4,
       title = "이 번주 스칼라 소식3",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
       date = LocalDateTime.now,
       author = "Lawrence Kim",
-      category = List("Scala", "Spark", "Akka", "ScalaDays2018")
+      tags = List("Scala", "Spark", "Akka", "ScalaDays2018")
     ),
     Article(id = 5,
       title = "이 번주 스칼라 소식4",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
       date = LocalDateTime.now,
       author = "Lawrence Kim",
-      category = List("Scala", "Spark", "Akka", "ScalaDays2018")
+      tags = List("Scala", "Spark", "Akka", "ScalaDays2018")
     ),
     Article(id = 6,
       title = "이 번주 스칼라 소식5",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
       date = LocalDateTime.now,
       author = "Lawrence Kim",
-      category = List("Scala", "Spark", "Akka", "ScalaDays2018")
+      tags = List("Scala", "Spark", "Akka", "ScalaDays2018")
     )
   )
 
@@ -64,6 +64,15 @@ class ArticleService @Inject()() {
 
   def get(count: Option[Int], pages: Option[Int]): List[Article] = {
     articles
+      .drop((pages.getOrElse(1) - 1) * 5)
+      .take(count.getOrElse(Integer.MAX_VALUE))
+  }
+
+  def countByTag(tag: String): Long = articles.filter(a => a.tags.contains(tag)).size
+
+  def getByTag(tag: String, count: Option[Int], pages: Option[Int]): List[Article] = {
+    articles
+      .filter(a => a.tags.contains(tag))
       .drop((pages.getOrElse(1) - 1) * 5)
       .take(count.getOrElse(Integer.MAX_VALUE))
   }

@@ -30,6 +30,17 @@ export class ArticleService {
     });
   }
 
+  getByTag$(tag, count: number = 5, pages: number = 1): Observable<HttpResponse<Article[]>> {
+    return this.httpClient.get<Article[]>(`${this.apiUrl}/tags/${tag}`, {
+      params: {
+        tag: String(tag),
+        count: String(count),
+        pages: String(pages)
+      },
+      observe: 'response'
+    });
+  }
+
   getById$(id): Observable<Article> {
     return this.httpClient.get<Article>(`${this.apiUrl}/${id}`);
   }

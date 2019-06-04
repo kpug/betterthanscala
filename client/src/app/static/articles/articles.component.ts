@@ -1,5 +1,5 @@
 import { map } from 'rxjs/operators';
-import { Component, OnInit, OnDestroy, Optional } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArticleService, Article } from './articles.service';
 
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
@@ -13,7 +13,7 @@ import { callLifecycleHooksChildrenFirst } from '@angular/core/src/view/provider
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.scss']
 })
-export class ArticlesComponent implements OnInit, OnDestroy {
+export class ArticlesComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   articles: Array<Article>;
   pages: number;
@@ -21,39 +21,40 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   pageIndexes: Array<number>;
   totalPages: number;
   navigationSubscription;
+  countPerPage: number = 5;
 
   constructor(private articleService: ArticleService,
     private route: ActivatedRoute,
     private router: Router) {
 
     this.route.params.subscribe((values) => {
-        const [articles, totalCount] = this.route.snapshot.data.response;
+      let result;
+      if (values.hasOwnProperty('tag')) {
+        result = this.articleService.getByTag$(values.tag, this.countPerPage, values.pages);
+      } else {
+        result = this.articleService.get$(this.countPerPage, values.pages);
+      }
+      result.subscribe(resp => {
+          const [articles, totalCount] = [resp.body, +resp.headers.get('x-total-count')];
+          this.articles = articles;
 
-        const countPerPage = 5;
-        this.totalPages = Math.ceil(totalCount / countPerPage);
+          this.totalPages = Math.ceil(totalCount / this.countPerPage);
 
-        this.pages = Number.isNaN(+values.pages) ? 1 : +values.pages;
-        this.articles = articles;
+          this.pages = Number.isNaN(+values.pages) ? 1 : +values.pages;
+          this.articles = articles;
 
-        this.currentIndex = Math.floor((this.pages - 1) / 5);
+          this.currentIndex = Math.floor((this.pages - 1) / 5);
 
-        const startPages = this.currentIndex * 5 + 1;
-        const endPages = Math.min(startPages + 5, this.totalPages);
+          const startPages: number = this.currentIndex * 5 + 1;
+          const endPages: number = Math.min(startPages + 5, this.totalPages);
 
-      this.pageIndexes = _.range(startPages, endPages + 1);
-      this.call(values);
-      });
-    }
+          this.pageIndexes = _.range(startPages, endPages + 1);
+        });
+    });
+  }
 
   // initialiseInvites() {
   // }
-  call(values) {
-    this.articleService.get$(5, values.pages)
-    .subscribe(resp => {
-      const result: [Article[], number] = [resp.body, +resp.headers.get('x-total-count')];
-      this.articles = result[0];
-    });
-  }
 
   ngOnInit() {
     // const [articles, totalCount] = this.route.snapshot.data.response;
@@ -78,16 +79,16 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   //   }
   // }
 
-  getPages(totalPages) {
-    const pages = +this.route.snapshot.queryParams.pages;
-    if (Number.isNaN(pages)) {
-      return 1;
-    } else if (pages === totalPages) {
-      return totalPages;
-    } else {
-      return pages;
-    }
-  }
+  // getPages(totalPages) {
+  //   const pages = +this.route.snapshot.queryParams.pages;
+  //   if (Number.isNaN(pages)) {
+  //     return 1;
+  //   } else if (pages === totalPages) {
+  //     return totalPages;
+  //   } else {
+  //     return pages;
+  //   }
+  // }
 
   // calcStartPages(pages: number, total: number) {
   //   if (total <= 5) {
@@ -140,7 +141,21 @@ export class ArticlesComponent implements OnInit, OnDestroy {
    * @param number
    */
   onClickReloadPage(number) {
-    this.router.navigate(['/articles', { pages: number }]);
+    const tag = this.route.snapshot.params.tag;
+
+    if (tag === undefined) {
+      this.router.navigate(['/articles', { pages: number }]);
+    } else {
+      this.router.navigate(['/articles', { pages: number, tag: this.route.snapshot.params.tag }]);
+    }
+  }
+
+  /**
+   * onClick: tag
+   */
+  onClickTag(event, tag) {
+    event.preventDefault();
+    this.router.navigate(['/articles', { tag: tag }]);
   }
 
 }

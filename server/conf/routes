@@ -6,6 +6,7 @@
 # An example controller showing a sample home page
 GET        /api/article            controllers.ArticleController.get(count: Option[Int], pages: Option[Int])
 GET        /api/article/:id        controllers.ArticleController.getById(id: Long)
+GET        /api/article/tags/:tag        controllers.ArticleController.getByTag(tag: String, count: Option[Int], pages: Option[Int])
 
 POST       /image/upload            controllers.ImageController.upload
 

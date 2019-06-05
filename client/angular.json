@@ -18,8 +18,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "assets": [
-              {
+            "assets": [{
                 "glob": "favicon.ico",
                 "input": "src",
                 "output": "/"
@@ -30,21 +29,27 @@
                 "output": "/assets"
               }
             ],
-            "styles": [
-              {
+            "styles": [{
                 "input": "src/styles.scss"
-              }
+              },
+              "node_modules/prismjs/themes/prism-twilight.css",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
             ],
-            "scripts": ["node_modules/marked/lib/marked.js"]
+            "scripts": ["node_modules/marked/lib/marked.js",
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
+              "node_modules/prismjs/components/prism-java.min.js",
+              "node_modules/prismjs/components/prism-scala.min.js",
+              "node_modules/prismjs/components/prism-csharp.min.js",
+              "node_modules/prismjs/components/prism-css.min.js"
+            ]
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -81,14 +86,21 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              {
+            "styles": [{
                 "input": "styles.scss"
-              }
+              },
+              "node_modules/prismjs/themes/prism-twilight.css",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
             ],
-            "scripts": ["node_modules/marked/lib/marked.js"],
-            "assets": [
-              {
+            "scripts": ["node_modules/marked/lib/marked.js",
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
+              "node_modules/prismjs/components/prism-java.js",
+              "node_modules/prismjs/components/prism-scala.js",
+              "node_modules/prismjs/components/prism-csharp.min.js",
+              "node_modules/prismjs/components/prism-css.min.js"
+            ],
+            "assets": [{
                 "glob": "favicon.ico",
                 "input": "src/",
                 "output": "/"
@@ -102,12 +114,10 @@
           },
           "configurations": {
             "test": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.test.ts"
-                }
-              ]
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.test.ts"
+              }]
             }
           }
         },

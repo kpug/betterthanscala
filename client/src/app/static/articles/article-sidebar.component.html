@@ -2,12 +2,16 @@
   최근 포스트
 </h4>
 <mat-nav-list>
-  <a mat-list-item [routerLink]="['/articles', article.id]" *ngFor="let article of articles"> {{ article.title }} </a>
+  <div *ngFor="let article of articles">
+    <a mat-list-item *ngIf="article.id == id"> {{ article.title }} </a>
+    <a mat-list-item *ngIf="article.id != id" [routerLink]="['/articles', article.id]"> {{ article.title }} </a>
+  </div>
+
 </mat-nav-list>
 <div *ngIf="isShare">
   <h4 class="head-share">
     공유하기
   </h4>
-  <share-buttons [theme]="'default'" [include]="['facebook','twitter','google','linkedin']" [show]="5" [showText]="false"
-    [showCount]="true" [autoSetMeta]="false"></share-buttons>
+  <share-buttons [theme]="'default'" [include]="['facebook','twitter','google','linkedin']" [show]="5"
+    [showText]="false" [showCount]="true" [autoSetMeta]="false"></share-buttons>
 </div>

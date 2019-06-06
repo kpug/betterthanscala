@@ -10,12 +10,18 @@ ul {
 
 .article-area {
   padding: 20px 30px;
-  border: solid 1px #c9c9c9;
+  border: solid 1px #A0A2A9;
   border-radius: 5px;
 }
 
+.article-tag-div {
+  border-bottom: dotted 1px #A0A2A9;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
 .article-tag {
-  color: #0115DD;
+  color: #088FC1;
 }
 
 .article-tag:hover {
@@ -23,7 +29,7 @@ ul {
 }
 
 .article-date {
-  color: #c9c9c9;
+  color: #A0A2A9;
   padding-right: 20px;
 }
 

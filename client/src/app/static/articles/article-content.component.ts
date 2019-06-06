@@ -28,7 +28,7 @@ export class ArticleContentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log('ngOnInit');
+    // console.log('ngOnInit');
   }
 
   initialiseInvites() {
@@ -48,4 +48,8 @@ export class ArticleContentComponent implements OnInit, OnDestroy {
     }
   }
 
+  onClickTag(event, tag) {
+    event.preventDefault();
+    this.router.navigate(['/articles', { tag: tag }]);
+  }
 }

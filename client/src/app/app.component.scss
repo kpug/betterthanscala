@@ -20,6 +20,7 @@ mat-sidenav-container {
     .branding {
       cursor: pointer;
       padding-top: 4px;
+      font-family: 'Muli', sans-serif;
 
       &.center {
         text-align: center;
@@ -47,6 +48,7 @@ mat-sidenav-container {
         min-width: 0;
         padding: 0 10px;
       }
+
       .sign-in-button {
         min-width: 0;
         padding: 0 10px;

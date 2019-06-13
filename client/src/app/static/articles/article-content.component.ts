@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ActivatedRoute, Router, ParamMap, NavigationStart, NavigationEnd } from '@angular/router';
 import { ArticleService, Article } from './articles.service';
+import { MarkdownService } from 'ngx-markdown';
 
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
 @Component({
@@ -15,9 +16,14 @@ export class ArticleContentComponent implements OnInit, OnDestroy {
 
   article: Article = new Article();
   navigationSubscription;
+  markdown;
+
+  tableOfContent: Array<string> = new Array<string>();
+
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private articleService: ArticleService) {
+    private articleService: ArticleService,
+  private markdownService: MarkdownService) {
 
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
       // If it is a NavigationEnd event re-initalise the component
@@ -36,6 +42,14 @@ export class ArticleContentComponent implements OnInit, OnDestroy {
     const id = +this.route.snapshot.paramMap.get('id');
     this.articleService.getById$(id).subscribe(response => {
       this.article = response;
+      this.markdown = this.markdownService.compile(this.article.content);
+      const htmlObject = document.createElement('div');
+      htmlObject.innerHTML = this.markdown;
+      for (let i = 0; i < htmlObject.children.length; i++) {
+        if (['H1', 'H2', 'H3'].includes(htmlObject.children[i].tagName)) {
+          this.tableOfContent.push(htmlObject.children[i].id);
+        }
+      }
     });
   }
 

@@ -1,4 +1,4 @@
-name := """Lordaeron"""
+name := """server"""
 organization := "com.betterthanscala"
 
 version := "1.0-SNAPSHOT"
@@ -9,6 +9,7 @@ scalaVersion := "2.12.6"
 
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
+libraryDependencies += "default" %% "remove-markdown-scala" % "0.1-SNAPSHOT"
 
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "com.betterthanscala.controllers._"

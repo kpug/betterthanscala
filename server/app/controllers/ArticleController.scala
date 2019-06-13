@@ -5,6 +5,7 @@ import javax.inject._
 import play.api.libs.json.Json
 import play.api.mvc._
 import services.ArticleService
+import kr.pe.lawrence._
 
 /**
   *
@@ -20,6 +21,9 @@ class ArticleController @Inject()(cc: ControllerComponents,
   def get(count: Option[Int], pages: Option[Int]) = Action { implicit request =>
 
     val articles = articleService.get(count, pages)
+      .map(a => a.copy(content = Markdown.remove(a.content)))
+
+    articles.foreach(println)
     val total = articleService.count
 
     articles.size match {

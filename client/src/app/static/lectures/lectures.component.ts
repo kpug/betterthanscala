@@ -33,7 +33,7 @@ export class LecturesComponent implements OnInit {
     //   content: 'blabla',
     //   github: '',
     //   docs: ''
-    // },
+    // }
   ];
 
   ngOnInit() {}

@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-8 article-area">
+    <div class="col-md-12">
       <h1> {{ article.title }} </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-8 article-area">
       <a href="" class="article-tag" *ngFor="let tag of article.tags" class="article-tag"
         (click)="onClickTag($event, tag)"> #{{ tag }}
       </a>
@@ -9,11 +13,11 @@
         <span class="article-date"> 마지막 수정: {{ article.date | date:'yyyy.MM.dd' }} </span>
       </div>
       <div class="article-content">
-        <markdown *ngIf='article.content' lineNumbers [data]="article.content"></markdown>
+        <markdown *ngIf='article.content' lineNumbers [data]="article.content" #markdown></markdown>
       </div>
     </div>
     <div class="col-md-4 col-lg-4">
-      <anms-article-sidebar [isShare]="true"></anms-article-sidebar>
+      <anms-article-sidebar [isShare]="true" [isContent]="true" [content]="tableOfContent"></anms-article-sidebar>
     </div>
   </div>
 </div>

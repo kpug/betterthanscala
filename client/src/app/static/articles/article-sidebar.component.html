@@ -1,13 +1,22 @@
-<h4>
-  최근 포스트
-</h4>
-<mat-nav-list>
-  <div *ngFor="let article of articles">
-    <a mat-list-item *ngIf="article.id == id"> {{ article.title }} </a>
-    <a mat-list-item *ngIf="article.id != id" [routerLink]="['/articles', article.id]"> {{ article.title }} </a>
-  </div>
-
-</mat-nav-list>
+<div *ngIf="isContent">
+  <h4>
+    목차
+  </h4>
+  <p *ngFor="let content of _content">
+    <a href="http://localhost:4200/articles/1#{{this.content}}">{{ content }}</a>
+  </p>
+</div>
+<div>
+  <h4>
+    최근 포스트
+  </h4>
+  <mat-nav-list>
+    <div *ngFor=" let article of articles">
+      <a mat-list-item *ngIf="article.id == id"> {{ article.title }} </a>
+      <a mat-list-item *ngIf="article.id != id" [routerLink]="['/articles', article.id]"> {{ article.title }} </a>
+    </div>
+  </mat-nav-list>
+</div>
 <div *ngIf="isShare">
   <h4 class="head-share">
     공유하기

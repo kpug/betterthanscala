@@ -37,6 +37,10 @@ ul {
   padding-top: 30px;
 }
 
-anms-article-sidebar {
+.sidebar {
   position: fixed;
+}
+
+.sidebar p a {
+  padding-left: 16px;
 }

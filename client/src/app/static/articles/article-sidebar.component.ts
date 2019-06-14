@@ -20,32 +20,6 @@ export class ArticleSidebarComponent implements OnInit {
   @Input()
   isShare = false;
 
-  @Input()
-  isContent = false;
-
-  private _content = '';
-
-  @Input()
-  set content(content: string) {
-    if (content === undefined) { return; }
-    this._content = content;
-    // const element = document.createRange().createContextualFragment(this._content);
-    // from(element);
-  }
-
-  get content(): string { return this._content; }
-
-  // @Input()
-  // set content(content: string) {
-  //   if (content === undefined) { return; }
-  //   this._content = this.markdownService.compile(content);
-  //   console.log(this._content);
-  //   const element = document.createRange().createContextualFragment(this._content);
-  //   // from(element);
-  // }
-
-  // get content(): string { return this._content; }
-
   articles: Array<Article>;
 
   constructor(private route: ActivatedRoute,

@@ -66,4 +66,16 @@ export class ArticleContentComponent implements OnInit, OnDestroy {
     event.preventDefault();
     this.router.navigate(['/articles', { tag: tag }]);
   }
+
+  scrollToElement(target) {
+    try {
+      const element = document.querySelector(`#${target}`);
+      if ( element ) {
+        element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+      }
+    } catch {
+      // ignore exception by querySelector
+    }
+    return false;
+  }
 }

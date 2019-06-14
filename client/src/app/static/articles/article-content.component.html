@@ -17,7 +17,15 @@
       </div>
     </div>
     <div class="col-md-4 col-lg-4">
-      <anms-article-sidebar [isShare]="true" [isContent]="true" [content]="tableOfContent"></anms-article-sidebar>
+      <div class="sidebar">
+        <h4>
+          목차
+        </h4>
+        <p *ngFor="let content of tableOfContent">
+          <a href="#" (click)="scrollToElement(content)">{{content}}</a>
+        </p>
+        <anms-article-sidebar [isShare]="true"></anms-article-sidebar>
+      </div>
     </div>
   </div>
 </div>

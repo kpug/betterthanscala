@@ -23,7 +23,6 @@ class ArticleController @Inject()(cc: ControllerComponents,
     val articles = articleService.get(count, pages)
       .map(a => a.copy(content = Markdown.remove(a.content)))
 
-    articles.foreach(println)
     val total = articleService.count
 
     articles.size match {

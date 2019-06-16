@@ -1,9 +1,10 @@
 package services
 
 import java.time.LocalDateTime
-import javax.inject._
 
+import javax.inject._
 import models.Article
+import repositories.ArticleRepository
 
 /**
   *
@@ -13,13 +14,13 @@ import models.Article
   * @version 0.0.1
   */
 @Singleton
-class ArticleService @Inject()() {
+class ArticleService @Inject()(articleRepository: ArticleRepository) {
 
   val articles = List(
     Article(id = 1,
       title = "스칼라 언어에서 트레이트 사용하기",
-      content = "## 트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다.\n" +
-        "### 트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다.\n\n" +
+      content = "## aaa\n" +
+        "### aaa2\n\n" +
         "- 1\n" +
         "- 2\n" +
         "- 3\n" +
@@ -34,8 +35,8 @@ class ArticleService @Inject()() {
         "```\n" +
         "\n" +
         "blablabla +" +
-        "## 트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다.\n" +
-    "### 트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다.\n\n" +
+        "## aaa3\n" +
+    "### aaa4\n\n" +
     "- 1\n" +
     "- 2\n" +
     "- 3\n" +
@@ -50,8 +51,8 @@ class ArticleService @Inject()() {
     "```\n" +
     "\n" +
     "blablabla" +
-        "## 트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다.\n" +
-  "### 트레이트는 자바에서 인터페이스와 같은 역할을 하는 스칼라의 키워드로 Trait로 선언한다.\n\n" +
+        "## aaa5\n" +
+  "### aaa6\n\n" +
     "- 1\n" +
     "- 2\n" +
     "- 3\n" +
@@ -66,7 +67,7 @@ class ArticleService @Inject()() {
     "```\n" +
     "\n" +
     "blablabla\n" +
-        "## 22",
+        "## aaa7",
       date = LocalDateTime.now,
       author = "Lawrence Kim",
       tags = List("Scala", "basic", "trait", "ddd")
@@ -111,6 +112,8 @@ class ArticleService @Inject()() {
   def count(): Long = articles.size
 
   def get(count: Option[Int], pages: Option[Int]): List[Article] = {
+    articleRepository.get()
+
     articles
       .drop((pages.getOrElse(1) - 1) * 5)
       .take(count.getOrElse(Integer.MAX_VALUE))

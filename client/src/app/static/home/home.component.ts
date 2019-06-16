@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
 
@@ -7,11 +7,9 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   releaseButler = require('../../../assets/release-butler.png');
 
   constructor() {}
-
-  ngOnInit() {}
 }

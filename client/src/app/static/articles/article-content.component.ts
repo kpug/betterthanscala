@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 
 import { ActivatedRoute, Router, ParamMap, NavigationStart, NavigationEnd } from '@angular/router';
 import { ArticleService, Article } from './articles.service';
 import { MarkdownService } from 'ngx-markdown';
 
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
+
 @Component({
   selector: 'anms-article-content',
   templateUrl: './article-content.component.html',
@@ -19,6 +20,7 @@ export class ArticleContentComponent implements OnInit, OnDestroy {
   markdown;
 
   tableOfContent: Array<string> = new Array<string>();
+  activeIndex: number = 0;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -34,7 +36,14 @@ export class ArticleContentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // console.log('ngOnInit');
+    window.addEventListener('scroll', this.scroll, true);
+  }
+
+  scroll = () => {
+    this.activeIndex = this.tableOfContent.map(x => x[0])
+      .map((c) => document.querySelector(`#${c}`))
+      .map(el => el.getBoundingClientRect())
+      .findIndex((x) => x.top > 63);
   }
 
   initialiseInvites() {
@@ -46,8 +55,9 @@ export class ArticleContentComponent implements OnInit, OnDestroy {
       const htmlObject = document.createElement('div');
       htmlObject.innerHTML = this.markdown;
       for (let i = 0; i < htmlObject.children.length; i++) {
-        if (['H1', 'H2', 'H3'].includes(htmlObject.children[i].tagName)) {
-          this.tableOfContent.push(htmlObject.children[i].id);
+        let tag = htmlObject.children[i].tagName;
+        if (['H1', 'H2', 'H3'].includes(tag)) {
+          this.tableOfContent.push([ htmlObject.children[i].id, tag]);
         }
       }
     });
@@ -60,6 +70,7 @@ export class ArticleContentComponent implements OnInit, OnDestroy {
     if (this.navigationSubscription) {
       this.navigationSubscription.unsubscribe();
     }
+    window.removeEventListener('scroll', this.scroll, true);
   }
 
   onClickTag(event, tag) {
@@ -71,11 +82,10 @@ export class ArticleContentComponent implements OnInit, OnDestroy {
     try {
       const element = document.querySelector(`#${target}`);
       if ( element ) {
-        element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+        element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
       }
-    } catch {
-      // ignore exception by querySelector
+    } finally {
+      return false;
     }
-    return false;
   }
 }

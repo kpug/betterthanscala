@@ -66,8 +66,7 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
   // useHash supports github.io demo page, remove in your app
   imports: [
     RouterModule.forRoot(routes, {
-      onSameUrlNavigation: 'reload',
-      anchorScrolling: 'enabled'
+      onSameUrlNavigation: 'reload'
     })
   ],
   providers: [

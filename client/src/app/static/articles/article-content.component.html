@@ -21,8 +21,9 @@
         <h4>
           목차
         </h4>
-        <p *ngFor="let content of tableOfContent">
-          <a href="#" (click)="scrollToElement(content)">{{content}}</a>
+        <p *ngFor="let content of tableOfContent; index as i">
+          <a href="#" class="a-scroll {{content[1]}}" [ngClass]="{active: i===activeIndex}"
+            (click)="scrollToElement(content[0])">{{content[0]}}</a>
         </p>
         <anms-article-sidebar [isShare]="true"></anms-article-sidebar>
       </div>

@@ -39,8 +39,27 @@ ul {
 
 .sidebar {
   position: fixed;
-}
 
-.sidebar p a {
-  padding-left: 16px;
+  p {
+    a {
+      padding-left: 16px;
+    }
+
+    a.H2 {
+      padding-left: 24px;
+    }
+
+    a.H3 {
+      padding-left: 32px;
+    }
+
+    a.a-scroll {
+      color: gray;
+    }
+
+    a.active {
+      color: black;
+      font-weight: bold;
+    }
+  }
 }

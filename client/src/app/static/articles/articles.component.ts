@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleService, Article } from './articles.service';
 
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
+
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { convertPropertyBindingBuiltins } from '@angular/compiler/src/compiler_util/expression_converter';
 import { FormArrayName } from '@angular/forms';
@@ -14,7 +15,9 @@ import { callLifecycleHooksChildrenFirst } from '@angular/core/src/view/provider
   styleUrls: ['./articles.component.scss']
 })
 export class ArticlesComponent implements OnInit {
+
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
+
   articles: Array<Article>;
   pages: number;
   currentIndex: number;
@@ -22,12 +25,29 @@ export class ArticlesComponent implements OnInit {
   totalPages: number;
   navigationSubscription;
   countPerPage: number = 5;
+  init: boolean = false;
 
   constructor(private articleService: ArticleService,
     private route: ActivatedRoute,
     private router: Router) {
+    const [articles, totalCount] = [this.route.snapshot.data.response[0], this.route.snapshot.data.response[1]];
+    this.articles = articles;
+    let values = this.route.snapshot.queryParams;
+
+    this.totalPages = Math.ceil(totalCount / this.countPerPage);
+
+    this.pages = Number.isNaN(+values.pages) ? 1 : +values.pages;
+    this.articles = articles;
+
+    this.currentIndex = Math.floor((this.pages - 1) / 5);
+
+    const startPages: number = this.currentIndex * 5 + 1;
+    const endPages: number = Math.min(startPages + 5, this.totalPages);
+
+    this.pageIndexes = _.range(startPages, endPages + 1);
 
     this.route.params.subscribe((values) => {
+      if (!this.init) return false;
       let result;
       if (values.hasOwnProperty('tag')) {
         result = this.articleService.getByTag$(values.tag, this.countPerPage, values.pages);
@@ -57,6 +77,8 @@ export class ArticlesComponent implements OnInit {
   // }
 
   ngOnInit() {
+    this.init = true;
+    console.log('first');
     // const [articles, totalCount] = this.route.snapshot.data.response;
     // const countPerPage = 5;
     // this.totalPages = Math.ceil(totalCount / countPerPage);

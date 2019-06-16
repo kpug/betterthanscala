@@ -4,7 +4,7 @@
       <h1 class="main-heading">강좌</h1>
     </div>
   </div>
-  <div class="row align-items-end">
+  <div class="row">
     <div class="col-md-6 col-lg-4" *ngFor="let lecture of lectures" [ngClass]="routeAnimationsElements">
       <mat-card>
         <mat-card-title><code *ngIf="lecture.version">{{ lecture.version }}</code>{{ lecture.name }}</mat-card-title>

@@ -19,7 +19,7 @@ export class ArticleContentComponent implements OnInit, OnDestroy {
   navigationSubscription;
   markdown;
 
-  tableOfContent: Array<string> = new Array<string>();
+  tableOfContent: Array<string[]> = new Array<string[]>();
   activeIndex: number = 0;
 
   constructor(private route: ActivatedRoute,

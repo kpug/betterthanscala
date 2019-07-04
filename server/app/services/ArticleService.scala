@@ -17,7 +17,7 @@ import repositories.ArticleRepository
 class ArticleService @Inject()(articleRepository: ArticleRepository) {
 
   val articles = List(
-    Article(id = 1,
+    Article(id = Option(1L),
       title = "스칼라 언어에서 트레이트 사용하기",
       content = "## aaa\n" +
         "### aaa2\n\n" +
@@ -68,42 +68,48 @@ class ArticleService @Inject()(articleRepository: ArticleRepository) {
     "\n" +
     "blablabla\n" +
         "## aaa7",
-      date = LocalDateTime.now,
+      createdAt = Option(LocalDateTime.now),
+      updatedAt = Option(LocalDateTime.now),
       author = "Lawrence Kim",
       tags = List("Scala", "basic", "trait", "ddd")
     ),
-    Article(id = 2,
+    Article(id = Option(2L),
       title = "이 번주 스칼라 소식1",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
-      date = LocalDateTime.now,
+      createdAt = Option(LocalDateTime.now),
+      updatedAt = Option(LocalDateTime.now),
       author = "Lawrence Kim",
       tags = List("Scala", "Spark", "Akka", "ScalaDays2018")
     ),
-    Article(id = 3,
+    Article(id = Option(3L),
       title = "이 번주 스칼라 소식2",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
-      date = LocalDateTime.now,
+      createdAt = Option(LocalDateTime.now),
+      updatedAt = Option(LocalDateTime.now),
       author = "Lawrence Kim",
       tags = List("Scala", "Spark", "Akka", "ScalaDays2018")
     ),
-    Article(id = 4,
+    Article(id = Option(4L),
       title = "이 번주 스칼라 소식3",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
-      date = LocalDateTime.now,
+      createdAt = Option(LocalDateTime.now),
+      updatedAt = Option(LocalDateTime.now),
       author = "Lawrence Kim",
       tags = List("Scala", "Spark", "Akka", "ScalaDays2018")
     ),
-    Article(id = 5,
+    Article(id = Option(5L),
       title = "이 번주 스칼라 소식4",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
-      date = LocalDateTime.now,
+      createdAt = Option(LocalDateTime.now),
+      updatedAt = Option(LocalDateTime.now),
       author = "Lawrence Kim",
       tags = List("Scala", "Spark", "Akka", "ScalaDays2018")
     ),
-    Article(id = 6,
+    Article(id = Option(6L),
       title = "이 번주 스칼라 소식5",
       content = "1. 스파크 속 아카 이야기, 2. 스칼라 데이즈 현장 취재",
-      date = LocalDateTime.now,
+      createdAt = Option(LocalDateTime.now),
+      updatedAt = Option(LocalDateTime.now),
       author = "Lawrence Kim",
       tags = List("Scala", "Spark", "Akka", "ScalaDays2018")
     )
@@ -111,10 +117,8 @@ class ArticleService @Inject()(articleRepository: ArticleRepository) {
 
   def count(): Long = articles.size
 
-  def get(count: Option[Int], pages: Option[Int]): List[Article] = {
+  def select(count: Option[Int], pages: Option[Int]): List[Article] = {
     articleRepository.get()
-
-    articles
       .drop((pages.getOrElse(1) - 1) * 5)
       .take(count.getOrElse(Integer.MAX_VALUE))
   }
@@ -122,12 +126,19 @@ class ArticleService @Inject()(articleRepository: ArticleRepository) {
   def countByTag(tag: String): Long = articles.filter(a => a.tags.contains(tag)).size
 
   def getByTag(tag: String, count: Option[Int], pages: Option[Int]): List[Article] = {
-    articles
+    articleRepository.get()
       .filter(a => a.tags.contains(tag))
       .drop((pages.getOrElse(1) - 1) * 5)
       .take(count.getOrElse(Integer.MAX_VALUE))
   }
 
-  def getById(id: Long): Article = articles.filter(_.id == id).head
+  def getById(id: Long): Article = articles.filter(_.id.get == id).head
 
+  def save(article: Article): Article = {
+    articleRepository.insert(article)
+  }
+
+  def modify(article: Article): Article = {
+    articleRepository.update(article)
+  }
 }

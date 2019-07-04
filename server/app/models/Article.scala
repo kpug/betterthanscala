@@ -11,10 +11,11 @@ import play.api.libs.json.Json
   * @note
   * @version 0.0.1
   */
-case class Article(id: Long
+case class Article(id: Option[Long]
                    , title: String
                    , content: String
-                   , date: LocalDateTime
+                   , createdAt: Option[LocalDateTime]
+                   , updatedAt: Option[LocalDateTime]
                    , author: String
                    , tags: List[String])
 

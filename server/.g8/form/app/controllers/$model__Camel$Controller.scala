@@ -37,7 +37,7 @@ class $model;format="Camel"$Controller @Inject()(mcc: MessagesControllerComponen
         BadRequest(views.html.$model;format="camel"$.form(formWithErrors))
       },
       $model;format="camel"$Data => {
-        /* binding success, you get the actual value. */       
+        /* binding success, you select the actual value. */
         /* flashing uses a short lived cookie */ 
         Redirect(routes.$model;format="Camel"$Controller.$model;format="camel"$Get()).flashing("success" -> ("Successful " + $model;format="camel"$Data.toString))
       }

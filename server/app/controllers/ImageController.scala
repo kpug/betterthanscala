@@ -18,7 +18,7 @@ class ImageController @Inject()(cc: ControllerComponents) extends AbstractContro
   def upload = Action(parse.multipartFormData) { request =>
     request.body.file("picture").map { picture =>
 
-      // only get the last part of the filename
+      // only select the last part of the filename
       // otherwise someone can send a path like ../../home/foo/bar.txt to write to other files on the system
       val filename = Paths.get(picture.filename).getFileName
 

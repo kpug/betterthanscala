@@ -123,7 +123,7 @@ class ArticleService @Inject()(articleRepository: ArticleRepository) {
       .take(count.getOrElse(Integer.MAX_VALUE))
   }
 
-  def countByTag(tag: String): Long = articles.filter(a => a.tags.contains(tag)).size
+  def countByTag(tag: String): Long = articleRepository.get().filter(a => a.tags.contains(tag)).size
 
   def getByTag(tag: String, count: Option[Int], pages: Option[Int]): List[Article] = {
     articleRepository.get()
@@ -132,7 +132,7 @@ class ArticleService @Inject()(articleRepository: ArticleRepository) {
       .take(count.getOrElse(Integer.MAX_VALUE))
   }
 
-  def getById(id: Long): Article = articles.filter(_.id.get == id).head
+  def getById(id: Long): Article = articleRepository.get().filter(_.id.get == id).head
 
   def save(article: Article): Article = {
     articleRepository.insert(article)

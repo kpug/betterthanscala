@@ -1,0 +1,19 @@
+<div class="menubar">
+  <a class="button" mat-raised-button color="accent" (click)="onSaveClick()">
+    저장하기
+  </a>
+  <a class="button" mat-raised-button color="primary" (click)="onCancelClick()">
+    돌아가기
+  </a>
+  <a class="button" mat-raised-button color="primary" (click)="onImageUpload()">
+    이미지 업로드
+  </a>
+</div>
+<div class="row editor">
+  <div class="col-md-6">
+    <ace [config]="config" [mode]="'text'" [theme]="'github'" [(value)]="value"></ace>
+  </div>
+  <div class="col-md-6">
+    <markdown lineNumbers [data]="value" #markdown></markdown>
+  </div>
+</div>

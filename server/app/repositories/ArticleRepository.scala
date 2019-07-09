@@ -44,7 +44,7 @@ class ArticleRepository @Inject()(db: Database) {
       val _author = article.author
       val _tags = article.tags.mkString(",")
 
-      SQL"insert into tb_article(title, content, created_at, updated_at, author, tags) values (${_title}, ${_content}, curdate(), ${_author}, ${_tags})"
+      SQL"insert into tb_article(title, content, created_at, updated_at, author, tags) values (${_title}, ${_content}, curdate(), curdate(),${_author}, ${_tags})"
         .executeInsert()
     }
     article.copy(id = id)

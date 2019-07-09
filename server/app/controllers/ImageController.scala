@@ -22,7 +22,7 @@ class ImageController @Inject()(cc: ControllerComponents) extends AbstractContro
       // otherwise someone can send a path like ../../home/foo/bar.txt to write to other files on the system
       val filename = Paths.get(picture.filename).getFileName
 
-      picture.ref.moveTo(Paths.get(s"/tmp/picture/$filename"), replace = true)
+      picture.ref.moveTo(Paths.get(s"/Users/Lawrence/temp/$filename"), replace = true)
       Ok("File uploaded")
     }.getOrElse {
       BadRequest

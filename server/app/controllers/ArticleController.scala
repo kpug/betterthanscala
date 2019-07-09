@@ -66,7 +66,7 @@ class ArticleController @Inject()(cc: ControllerComponents,
     // Expecting json body
     body
       .map { json =>
-        Ok("Got: " + (json \ "name").as[String])
+        Ok("Got: " + (json \ "author").as[String])
       }
       .getOrElse {
         BadRequest("Expecting application/json request body")

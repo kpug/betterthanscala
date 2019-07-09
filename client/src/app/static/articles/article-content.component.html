@@ -10,7 +10,7 @@
         (click)="onClickTag($event, tag)"> #{{ tag }}
       </a>
       <div class="article-tag-div">
-        <span class="article-date"> 마지막 수정: {{ article.date | date:'yyyy.MM.dd' }} </span>
+        <span class="article-date"> 마지막 수정: {{ article.updatedAt | date:'yyyy.MM.dd hh:mm:ss' }} </span>
       </div>
       <div class="article-content">
         <markdown *ngIf='article.content' lineNumbers [data]="article.content" #markdown></markdown>

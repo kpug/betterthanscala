@@ -8,9 +8,10 @@ export class Article {
   id: number;
   title: string;
   content: string;
-  date: object;
+  createdAt: object;
+  updatedAt: object;
   author: string;
-  category: Array<string>;
+  tags: Array<string>;
 }
 
 @Injectable()
@@ -43,5 +44,9 @@ export class ArticleService {
 
   getById$(id): Observable<Article> {
     return this.httpClient.get<Article>(`${this.apiUrl}/${id}`);
+  }
+
+  save$(article): Observable<Article> {
+    return this.httpClient.post<Article>(`${this.apiUrl}`, article);
   }
 }

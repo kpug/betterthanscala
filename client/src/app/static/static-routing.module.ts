@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LecturesComponent } from './lectures/lectures.component';
 import { ArticlesComponent } from './articles/articles.component';
+import { ArticleEditorComponent } from './articles/article-editor.component';
 import { ArticleContentComponent } from './articles/article-content.component';
 import { ContributeComponent } from './contribute/contribute.component';
 import { ArticlesListResolver } from './articles/articles-list.resolver';
@@ -21,6 +22,10 @@ const routes: Routes = [
     data: { title: 'Articles' },
     resolve: { response: ArticlesListResolver },
     runGuardsAndResolvers: 'always'
+  },
+  {
+    path: 'articles/new',
+    component: ArticleEditorComponent
   },
   {
     path: 'articles/:id',

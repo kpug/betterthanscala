@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Input } from '@angular/core';
 
 import { Article, ArticleService } from './articles.service';
 
@@ -24,22 +24,32 @@ export class ArticleEditorComponent {
     readOnly: false
   };
 
-  public value: string;
+  @Input()
+  public title: string;
+
+  @Input()
+  public content: string;
+
+  @Input()
+  public tags: string;
 
   constructor(private articleService: ArticleService) {
   }
 
   onSaveClick() {
     const article = new Article();
-    article.title = '';
-    article.content = '';
+    article.title = this.title;
+    article.content = this.content;
+    article.tags = this.tags.split(',');
     article.author = 'lawrence';
-    article.tags = [''];
     this.articleService.save$(article).subscribe();
   }
 
   onCancelClick() {
-    console.log('cancel');
+    if ((this.title !== '' || this.content !== '' || this.tags !== '') && !confirm('수정사항이 있습니다. 취소하시겠습니까?')) {
+    } else {
+      history.back();
+    }
   }
 
   onImageUpload() {

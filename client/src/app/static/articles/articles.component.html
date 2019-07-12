@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-8 article-area">≥
+    <div class="col-sm-12 col-md-8 col-lg-8 article-area">
       <div class="article" *ngFor="let article of articles" [ngClass]="routeAnimationsElements">
         <a class="article-title" [routerLink]="['/articles', article.id]" routerLinkActive="active">
           {{ article.title }}

@@ -1,11 +1,44 @@
-.editor {
-  height: 100%
+.ip-title {
+  background-color: #fafafa;
+  border: 0px;
+  padding-left: 10px;
+  font-size: 2em;
 }
 
+.ip-tags {
+  background-color: #fafafa;
+  border: 0px;
+  padding-left: 10px;
+  font-size: 1em;
+}
+
+.editor {
+  height: 100%;
+  border: 1px solid gray;
+}
+
+.preview {
+  border-left: 1px solid gray;
+  background-color: white;
+}
+
+
 .menubar {
-  margin: 1em
+  margin: 1em;
 }
 
 .button {
-  margin-right: 0.3em
+  margin-right: 0.3em;
+}
+
+
+.this {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.trow {
+  display: table-row;
+  height: 0;
 }

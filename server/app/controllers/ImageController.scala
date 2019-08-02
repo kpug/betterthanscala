@@ -1,9 +1,13 @@
 package controllers
 
 import java.nio.file.Paths
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 import javax.inject._
+import play.api.libs.json.Json
 import play.api.mvc._
+import utils.HashUtils
 
 /**
   *
@@ -20,10 +24,11 @@ class ImageController @Inject()(cc: ControllerComponents) extends AbstractContro
 
       // only select the last part of the filename
       // otherwise someone can send a path like ../../home/foo/bar.txt to write to other files on the system
-      val filename = Paths.get(picture.filename).getFileName
+      val originName = Paths.get(picture.filename).getFileName
+      val hash = HashUtils.md5HashString(originName + LocalDateTime.now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
 
-      picture.ref.moveTo(Paths.get(s"/Users/Lawrence/temp/$filename"), replace = true)
-      Ok("File uploaded")
+      picture.ref.moveTo(Paths.get(s"/Users/Lawrence/temp/${hash}"), replace = true)
+      Ok(Json.toJson(Map( "path" -> hash)))
     }.getOrElse {
       BadRequest
 //      Redirect(routes.index).flashing(

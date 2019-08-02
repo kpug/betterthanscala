@@ -1,3 +1,4 @@
+import { ImageUploaderService } from './../../core/fileupload/image-uploader.service';
 import { Component, ViewChild, Input } from '@angular/core';
 
 import { Article, ArticleService } from './articles.service';
@@ -33,7 +34,9 @@ export class ArticleEditorComponent {
   @Input()
   public tags: string;
 
-  constructor(private articleService: ArticleService) {
+  selectedFile: File;
+
+  constructor(private articleService: ArticleService, private imageUploaderService: ImageUploaderService) {
   }
 
   onSaveClick() {
@@ -52,7 +55,13 @@ export class ArticleEditorComponent {
     }
   }
 
-  onImageUpload() {
-    console.log('image upload');
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+    this.imageUploaderService.upload$(this.selectedFile)
+      .subscribe(response => {
+        // const imgPath = `![${this.selectedFile.name}](${response.path})`;
+        // this.content += imgPath;
+      }
+    );
   }
 }

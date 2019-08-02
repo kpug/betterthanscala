@@ -1,8 +1,9 @@
 <div class="this">
   <div class="trow menubar">
-    <a class="button" mat-raised-button color="primary" (click)="onImageUpload()">
-      이미지 업로드
-    </a>
+    <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+    <button (click)="fileInput.click()" mat-icon-button aria-label="Example icon-button with a heart icon">
+      <mat-icon>cloud_upload</mat-icon>
+    </button>
   </div>
   <div class="trow">
     <input class="ip-title" [(ngModel)]="title" placeholder="제목" />

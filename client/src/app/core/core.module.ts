@@ -14,6 +14,7 @@ import { authReducer } from './auth/auth.reducer';
 import { AuthEffects } from './auth/auth.effects';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AnimationsService } from './animations/animations.service';
+import { ImageUploaderService } from './fileupload/image-uploader.service';
 
 import { MarkdownModule } from 'ngx-markdown';
 
@@ -43,7 +44,12 @@ if (!environment.production) {
     MarkdownModule.forRoot()
   ],
   declarations: [],
-  providers: [LocalStorageService, AuthGuardService, AnimationsService]
+  providers: [
+    LocalStorageService,
+    AuthGuardService,
+    AnimationsService,
+    ImageUploaderService
+  ]
 })
 export class CoreModule {
   constructor(

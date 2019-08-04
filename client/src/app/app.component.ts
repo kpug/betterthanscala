@@ -127,6 +127,8 @@ export class AppComponent implements OnInit, OnDestroy {
       // : NIGHT_MODE_THEME
     ).toLowerCase();
     this.componentCssClass = effectiveTheme;
+    console.log(effectiveTheme)
+    // this.componentCssClass = theme;
     const classList = this.overlayContainer.getContainerElement().classList;
     const toRemove = Array.from(classList).filter((item: string) =>
       item.includes('-theme')
@@ -135,6 +137,7 @@ export class AppComponent implements OnInit, OnDestroy {
       classList.remove(...toRemove);
     }
     classList.add(effectiveTheme);
+    // classList.add(theme);
   }
 
   private subscribeToRouterEvents() {

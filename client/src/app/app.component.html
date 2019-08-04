@@ -1,17 +1,11 @@
 <mat-sidenav-container>
-
   <mat-sidenav #sidenav mode="push">
     <div class="branding"><img [src]="logo" /> <span>Better than scala</span></div>
     <mat-nav-list>
       <a mat-list-item *ngFor="let item of navigationSideMenu" (click)="sidenav.close()" [routerLink]="[item.link]"
         routerLinkActive="active">
-        {{item.label}}
+        {{ item.label }}
       </a>
-      <!-- <a mat-list-item
-         href="https://github.com/tomastrajan/angular-ngrx-material-starter"
-         target="_blank">
-        Github
-      </a> -->
     </mat-nav-list>
   </mat-sidenav>
 
@@ -32,37 +26,6 @@
           {{item.label}}
         </button>
       </span>
-
-      <!-- <button mat-button class="sign-in-button "
-              *ngIf="!isAuthenticated"
-              (click)="onLoginClick()">
-        Sign in
-      </button>
-
-      <button *ngIf="isAuthenticated"
-              mat-icon-button
-              [matMenuTriggerFor]="toolbarUserMenu">
-        <mat-icon fontSet="fas" fontIcon="fa-user-circle"></mat-icon>
-      </button>
-      <mat-menu #toolbarUserMenu="matMenu">
-        <button mat-menu-item (click)="onLogoutClick()">
-          <mat-icon fontSet="fas" fontIcon="fa-power-off"></mat-icon>
-          <span>Logout</span>
-        </button>
-      </mat-menu>
-
-      <button mat-icon-button routerLink="settings" class="d-none d-sm-inline">
-        <mat-icon fontSet="fas" fontIcon="fa-cog"></mat-icon>
-      </button>
-
-      <a matTooltip="Project Github Repository"
-         matdTooltipPosition="before"
-         mat-icon-button
-         class="link d-none d-sm-inline"
-         href="https://github.com/tomastrajan/angular-ngrx-material-starter"
-         target="_blank">
-        <mat-icon fontSet="fab" fontIcon="fa-github"></mat-icon>
-      </a> -->
     </mat-toolbar>
   </div>
 
@@ -79,10 +42,6 @@
             <mat-icon fontSet="fab" fontIcon="fa-github"></mat-icon>
             <span>Github</span>
           </a>
-          <!-- <a href="https://www.medium.com/@tomastrajan" target="_blank">
-            <mat-icon fontSet="fab" fontIcon="fa-medium-m"></mat-icon>
-            <span>Medium</span>
-          </a> -->
           <a href="https://www.facebook.com/groups/playuser/" target="_blank">
             <mat-icon fontSet="fab" fontIcon="fa-facebook"></mat-icon>
             <span>Facebook</span>
@@ -95,22 +54,10 @@
             <mat-icon fontSet="fab" fontIcon="fa-twitter"></mat-icon>
             <span>Twitter</span>
           </a>
-          <!-- <a href="https://kpugkr.atlassian.net/wiki/discover/all-updates" target="_blank">
-            <mat-icon fontSet="fab" fontIcon="fa-confluence"></mat-icon>
-            <span>Confluence</span>
-          </a> -->
           <a href="https://www.youtube.com/channel/UCn2D2fq5mCxXA0LnQyvHH3A" target="_blank">
             <mat-icon fontSet="fab" fontIcon="fa-youtube"></mat-icon>
             <span>Youtube</span>
           </a>
-          <!-- <a href="https://www.instagram.com/tomastrajan" target="_blank">
-            <mat-icon fontSet="fab" fontIcon="fa-instagram"></mat-icon>
-            <span>Instagram</span>
-          </a>
-          <a href="https://www.slides.com/tomastrajan" target="_blank">
-            <mat-icon fontSet="fas" fontIcon="fa-play-circle"></mat-icon>
-            <span>Slides</span>
-          </a> -->
         </div>
       </div>
       <div class="row">

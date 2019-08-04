@@ -8,8 +8,15 @@ h1 {
 }
 
 h2 {
+  text-align: center;
   font-size: 1.5em;
-  text-transform: uppercase;
+  // text-transform: uppercase;
+}
+
+.content {
+  text-align: center;
+  font-size: 1em;
+  color: gray;
 }
 
 .background {
@@ -40,6 +47,10 @@ h2 {
         top: 4px;
       }
     }
+
+    .grid-tiles {
+      max-width: 300px;
+    }
   }
 
   .get-started {
@@ -65,7 +76,7 @@ h2 {
     left: 0;
     bottom: 0;
     right: 0;
-    background: url('../../../assets/intro2.jpg') no-repeat center top;
+    // background: url('../../../assets/intro2.jpg') no-repeat center top;
     background-size: cover;
     opacity: 0.4;
     content: '';
@@ -86,6 +97,14 @@ h2 {
 
   .container {
     position: relative;
+
+    .profile {
+      margin-left: 10px;
+      width: 100px;
+      height: 100px;
+      border: 1px solid gray;
+      border-radius: 50px;
+    }
   }
 }
 

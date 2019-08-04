@@ -92,6 +92,7 @@ export function settingsReducer(
     default:
       return state;
   }
+  
 }
 
 export interface SettingsState {

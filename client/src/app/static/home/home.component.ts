@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
+import { link } from 'fs';
 
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
+export interface UserProfile {
+  img: string;
+  name: string;
+  link: string;
 }
 
 @Component({
@@ -18,11 +18,17 @@ export class HomeComponent {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   releaseButler = require('../../../assets/release-butler.png');
 
-  tiles: Tile[] = [
-    { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
-    { text: 'Two', cols: 1, rows: 2, color: 'lightgreen' },
-    { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
-    { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' }
+  backers: UserProfile[] = [
+    {
+      img: 'https://avatars0.githubusercontent.com/u/472116?s=460&v=4',
+      name: 'Joseph',
+      link: 'https://github.com/orgs/kpug/people/before30'
+    },
+    {
+      img: 'https://avatars1.githubusercontent.com/u/4495200?s=460&v=4',
+      name: 'Lawrence',
+      link: 'https://github.com/pr-lawrence'
+    }
   ];
 
   constructor() {}

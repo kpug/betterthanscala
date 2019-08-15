@@ -10,7 +10,6 @@ import play.api.mvc._
 import utils.HashUtils
 
 /**
-  *
   * @author Lawrence
   * @since 2018. 9. 23.
   * @note

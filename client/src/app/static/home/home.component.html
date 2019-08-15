@@ -13,34 +13,28 @@
     <div class="actions">
       <div class="container">
         <div [ngClass]="routeAnimationsElements">
-          <mat-grid-list cols="3" rowHeight="3:2" class="grid">
-            <mat-grid-tile class="grid-tiles">
+          <mat-grid-list cols="3" rowHeight="3:1" class="grid">
+            <mat-grid-tile class="grid-tiles-title">
               Learn
             </mat-grid-tile>
-            <mat-grid-tile class="grid-tiles">
+            <mat-grid-tile class="grid-tiles-title">
               Share
             </mat-grid-tile>
-            <mat-grid-tile class="grid-tiles">
+            <mat-grid-tile class="grid-tiles-title">
               Together
             </mat-grid-tile>
-            <mat-grid-tile class="grid-tiles">
-              <mat-card>쉽게 따라할 수 있는 강의 스타일의 강의 부터 차근차근 학습할 수 있는 동영상까지 준비되어 있습니다.</mat-card>
+          </mat-grid-list>
+          <mat-grid-list cols="3" rowHeight="3:1" class="grid">
+            <mat-grid-tile class="grid-tiles-content">
+              <mat-card class="mat-card">차근차근 학습할 수 있는 동영상부터 문서 까지 학습이 쉬워집니다.</mat-card>
             </mat-grid-tile>
-            <mat-grid-tile class="grid-tiles">
-              <mat-card>무료입니다.</mat-card>
+            <mat-grid-tile class="grid-tiles-content">
+              <mat-card class="mat-card">지식을 공유하고 나누는 것. 그것이 바로 학습을 준비하는 기본 자세입니다.</mat-card>
             </mat-grid-tile>
-            <mat-grid-tile class="grid-tiles">
-              <mat-card>혼자 할 때보다 함께 할 때 더욱 즐겁고 오래 지속할 수 있습니다.</mat-card>
+            <mat-grid-tile class="grid-tiles-content">
+              <mat-card class="mat-card">혼자 할 때보다 함께 할 때 더욱 즐겁고 오래 지속할 수 있습니다. 함께하세요.</mat-card>
             </mat-grid-tile>
           </mat-grid-list>
-        </div>
-      </div>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="actions">
-      <div [ngClass]="routeAnimationsElements">
-        <div class="container">
-
         </div>
       </div>
     </div>
@@ -51,28 +45,9 @@
           <h3>
             다루고 있는 기술들
           </h3>
-          kafka,
-          hdfs,
-          hive,
-          spark,
-          cdh,
-          yarn,
-          elastic search,
-          html,
-          css,
-          javascript,
-          java,
-          kotlin,
-          scala,
-          go,
-          python,
-          spring,
-          play framework,
-          nodejs,
-          react,
-          angular,
-          nginx,
-          git,
+          <ul>
+            <li class="li-horizontal"> </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -80,7 +55,14 @@
     <div class="actions">
       <div [ngClass]="routeAnimationsElements">
         <div class="container">
-          blabla
+          <h3>Backer</h3>
+          <ul>
+            <li class="li-horizontal" *ngFor="let backer of backers">
+              <a href="{{backer.link}}" target="_black">
+                <img class="profile" alt="{{ backer.name }}" src="{{backer.img}}">
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -89,9 +71,6 @@
       <div [ngClass]="routeAnimationsElements">
         <div class="container">
           <h3>만든 사람들</h3>
-          <img class="profile" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/course/1/5649.png">
-          <img class="profile" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/course/1/5649.png">
-          <img class="profile" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/course/1/5649.png">
           <img class="profile" src="https://s3-ap-northeast-2.amazonaws.com/opentutorials-user-file/course/1/5649.png">
         </div>
       </div>

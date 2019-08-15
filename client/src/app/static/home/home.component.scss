@@ -44,12 +44,23 @@ h2 {
 
       mat-icon {
         position: relative;
+        /* - */
         top: 4px;
       }
     }
 
-    .grid-tiles {
-      max-width: 300px;
+    .grid-tiles-title {
+      // max-height: 100px;
+      font-size: 2em;
+      font-family: 'Yanone Kaffeesatz', sans-serif;
+    }
+
+    // .grid-tiles-content {
+    //   min-height: 200px;
+    // }
+
+    .mat-card {
+      margin: 10px;
     }
   }
 
@@ -98,11 +109,24 @@ h2 {
   .container {
     position: relative;
 
+    ul {
+      display: inline-table;
+    }
+
+    .li-horizontal {
+      list-style: none;
+      // margin: 0 0 0 0;
+      // padding: 0 0 0 0;
+      // border: 0;
+      float: left;
+    }
+
+
     .profile {
       margin-left: 10px;
       width: 100px;
       height: 100px;
-      border: 1px solid gray;
+      // border: 1px solid gray;
       border-radius: 50px;
     }
   }
